@@ -16,11 +16,11 @@ const Address = db.define(
     },
     boxNumber: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     userNumber: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
   },
   {

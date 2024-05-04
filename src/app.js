@@ -32,7 +32,11 @@ app.use("/app/v1", FailPortsRoutes);
 app.use("/app/v1", AddressRoutes);
 
 app.get("/", (req, res) => {
-  res.status(200).json("Respuesta exitosa");
+  res.status(200).json({
+    status: "Respuesta exitosa",
+    description: "Prueba esta API con SWAGGER en el siguiente ruta",
+    // link: process.env.HOST,
+  });
 });
 
 app.use(handleError);
