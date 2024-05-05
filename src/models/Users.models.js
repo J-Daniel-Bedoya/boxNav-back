@@ -21,7 +21,7 @@ const Users = db.define(
       allowNull: false,
     },
     addressId: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       field: "address_id",
       references: {
