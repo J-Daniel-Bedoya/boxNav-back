@@ -1,7 +1,7 @@
-const { Users, Boxes, FailPorts } = require(".");
+const { Users, Boxes, FailPorts, Town } = require(".");
 
 const initModels = () => {
-  Users, Boxes, FailPorts;
+  Users, Boxes, FailPorts, Town;
 };
 
 module.exports = initModels;

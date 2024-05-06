@@ -1,7 +1,7 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
 const Boxes = require("./Boxes.models");
-const Address = require("./Address.models");
+const Address = require("./Town.models");
 
 const Users = db.define(
   "users",

@@ -1,6 +1,6 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
-const Address = require("./Address.models");
+const Town = require("./Town.models");
 
 const Boxes = db.define(
   "boxes",
@@ -11,14 +11,14 @@ const Boxes = db.define(
       autoIncrement: true,
       allowNull: false,
     },
-    addressId: {
+    townId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: Address,
+        model: Town,
         key: "id",
       },
-      field: "address_id",
+      field: "town_id",
     },
     number: {
       type: DataTypes.INTEGER,
@@ -31,6 +31,7 @@ const Boxes = db.define(
     failPorts: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: "fail_ports",
     },
     address: {
       type: DataTypes.STRING,

@@ -8,7 +8,7 @@ const {
   UsersRoutes,
   BoxesRoutes,
   FailPortsRoutes,
-  AddressRoutes,
+  TownRoutes,
 } = require("./routes");
 
 const app = express();
@@ -29,7 +29,7 @@ db.sync({ alter: true })
 app.use("/app/v1", UsersRoutes);
 app.use("/app/v1", BoxesRoutes);
 app.use("/app/v1", FailPortsRoutes);
-app.use("/app/v1", AddressRoutes);
+app.use("/app/v1", TownRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({

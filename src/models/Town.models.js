@@ -1,8 +1,8 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
 
-const Address = db.define(
-  "address",
+const Town = db.define(
+  "town",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -17,10 +17,12 @@ const Address = db.define(
     boxNumber: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      field: "box_number",
     },
     userNumber: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      field: "user_number",
     },
   },
   {
@@ -28,4 +30,4 @@ const Address = db.define(
   }
 );
 
-module.exports = Address;
+module.exports = Town;

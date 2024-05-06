@@ -1,9 +1,9 @@
-const { Address } = require("../models");
+const { Town } = require("../models");
 
-class AddressServices {
+class TownServices {
   static async getAll() {
     try {
-      const result = await Address.findAll();
+      const result = await Town.findAll();
       return result;
     } catch (error) {
       throw error;
@@ -11,7 +11,7 @@ class AddressServices {
   }
   static async get(id) {
     try {
-      const result = await Address.findOne({
+      const result = await Town.findOne({
         where: id,
       });
       return result;
@@ -19,17 +19,17 @@ class AddressServices {
       throw error;
     }
   }
-  static async create(address) {
+  static async create(town) {
     try {
-      const result = await Address.create(address);
+      const result = await Town.create(town);
       return result;
     } catch (error) {
       throw error;
     }
   }
-  static async update(id, address) {
+  static async update(id, town) {
     try {
-      const result = await Address.update(address, {
+      const result = await Town.update(town, {
         where: id,
       });
       return result;
@@ -39,7 +39,7 @@ class AddressServices {
   }
   static async delete(id) {
     try {
-      const result = await Address.destroy({ where: id });
+      const result = await Town.destroy({ where: id });
       return result;
     } catch (error) {
       throw error;
@@ -47,4 +47,4 @@ class AddressServices {
   }
 }
 
-module.exports = AddressServices;
+module.exports = TownServices;

@@ -1,11 +1,11 @@
 const UsersServices = require("./Users.services");
 const BoxesServices = require("./Boxes.services");
 const FailPortsServices = require("./FailPorts.services");
-const AddressServices = require("./Address.services");
+const TownServices = require("./Town.services");
 
 module.exports = {
   UsersServices,
   BoxesServices,
   FailPortsServices,
-  AddressServices,
+  TownServices,
 };

@@ -23,12 +23,12 @@ const {
 } = require("./FailPorts.controllers");
 
 const {
-  addressReadAll,
-  addressRead,
-  addressRegister,
-  addressActualize,
-  addressEliminate,
-} = require("./Address.controllers");
+  townReadAll,
+  townRead,
+  townRegister,
+  townActualize,
+  townEliminate,
+} = require("./Town.controllers");
 
 module.exports = {
   usersReadAll,
@@ -49,9 +49,9 @@ module.exports = {
   failPortsActualize,
   failPortsEliminate,
   //
-  addressReadAll,
-  addressRead,
-  addressRegister,
-  addressActualize,
-  addressEliminate,
+  townReadAll,
+  townRead,
+  townRegister,
+  townActualize,
+  townEliminate,
 };
