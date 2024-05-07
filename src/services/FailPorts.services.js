@@ -1,4 +1,4 @@
-const { FailPorts } = require("../models");
+const { FailPorts, Boxes } = require("../models");
 
 class FailPortsServices {
   static async getAll() {
@@ -21,7 +21,11 @@ class FailPortsServices {
   }
   static async create(port) {
     try {
+      const box = await Boxes.findByPk(port.boxId);
       const result = await FailPorts.create(port);
+      box.failPorts += 1;
+      await box.save();
+
       return result;
     } catch (error) {
       throw error;

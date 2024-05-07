@@ -1,4 +1,4 @@
-const { Users } = require("../models");
+const { Users, Town } = require("../models");
 
 class UsersServices {
   static async getAll() {
@@ -21,7 +21,10 @@ class UsersServices {
   }
   static async create(user) {
     try {
+      const town = await Town.findByPk(user.townId);
       const result = await Users.create(user);
+      town.userNumber += 1;
+      await town.save();
       return result;
     } catch (error) {
       throw error;

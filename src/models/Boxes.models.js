@@ -30,7 +30,7 @@ const Boxes = db.define(
     },
     failPorts: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       field: "fail_ports",
     },
     address: {
