@@ -11,7 +11,9 @@ const townRead = async (req, res) => {
     const id = req.params;
     const result = await TownServices.get(id);
     res.json(result);
-  } catch (error) {}
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
 };
 const townRegister = async (req, res) => {
   try {

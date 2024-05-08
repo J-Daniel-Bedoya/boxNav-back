@@ -16,9 +16,7 @@ class TownServices {
         include: {
           model: Boxes,
           as: "boxes",
-          attributes: {
-            exclude: [],
-          },
+          attributes: ["id"],
         },
       });
       return result;

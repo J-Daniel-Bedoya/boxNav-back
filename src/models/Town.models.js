@@ -1,5 +1,6 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
+const Boxes = require("./Boxes.models");
 
 const Town = db.define(
   "town",

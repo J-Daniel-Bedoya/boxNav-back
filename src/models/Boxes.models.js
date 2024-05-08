@@ -26,7 +26,7 @@ const Boxes = db.define(
     },
     ports: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
     },
     failPorts: {
       type: DataTypes.INTEGER,
@@ -34,6 +34,10 @@ const Boxes = db.define(
       field: "fail_ports",
     },
     address: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    coordinates: {
       type: DataTypes.STRING,
       allowNull: true,
     },
