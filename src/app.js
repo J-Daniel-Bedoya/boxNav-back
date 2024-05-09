@@ -9,6 +9,8 @@ const {
   BoxesRoutes,
   FailPortsRoutes,
   TownRoutes,
+  AdminRoutes,
+  AuthRoutes,
 } = require("./routes");
 
 const app = express();
@@ -26,10 +28,12 @@ db.sync({ alter: true })
   .then(() => console.log("Conexión exitosa"))
   .catch((err) => console.log(err));
 
+app.use("/app/v1", AuthRoutes);
 app.use("/app/v1", UsersRoutes);
 app.use("/app/v1", BoxesRoutes);
 app.use("/app/v1", FailPortsRoutes);
 app.use("/app/v1", TownRoutes);
+app.use("/app/v1", AdminRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({

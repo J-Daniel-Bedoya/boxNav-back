@@ -1,9 +1,9 @@
-const { Town, Boxes } = require("../models");
+const { Admin } = require("../models");
 
-class TownServices {
+class AdminServices {
   static async getAll() {
     try {
-      const result = await Town.findAll();
+      const result = await Admin.findAll();
       return result;
     } catch (error) {
       throw error;
@@ -11,30 +11,25 @@ class TownServices {
   }
   static async get(id) {
     try {
-      const result = await Town.findOne({
+      const result = await Admin.findOne({
         where: id,
-        include: {
-          model: Boxes,
-          as: "boxes",
-          // attributes: ["id"],
-        },
       });
       return result;
     } catch (error) {
       throw error;
     }
   }
-  static async create(town) {
+  static async create(admin) {
     try {
-      const result = await Town.create(town);
+      const result = await Admin.create(admin);
       return result;
     } catch (error) {
       throw error;
     }
   }
-  static async update(id, town) {
+  static async update(id, admin) {
     try {
-      const result = await Town.update(town, {
+      const result = await Admin.update(admin, {
         where: id,
       });
       return result;
@@ -44,7 +39,7 @@ class TownServices {
   }
   static async delete(id) {
     try {
-      const result = await Town.destroy({ where: id });
+      const result = await Admin.destroy({ where: id });
       return result;
     } catch (error) {
       throw error;
@@ -52,4 +47,4 @@ class TownServices {
   }
 }
 
-module.exports = TownServices;
+module.exports = AdminServices;

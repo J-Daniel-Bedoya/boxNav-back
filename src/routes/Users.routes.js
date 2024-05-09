@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+const authenticate = require("../middlewares/auth.middleware");
 
 const {
   usersReadAll,
@@ -9,10 +10,10 @@ const {
   usersEliminate,
 } = require("../controllers");
 
-router.get("/users", usersReadAll);
-router.get("/users/:id", usersRead);
-router.post("/users", usersRegister);
-router.put("/users/:id", usersActualize);
-router.delete("/users/:id", usersEliminate);
+router.get("/users", authenticate, usersReadAll);
+router.get("/users/:id", authenticate, usersRead);
+router.post("/users", authenticate, usersRegister);
+router.patch("/users/:id", authenticate, usersActualize);
+router.delete("/users/:id", authenticate, usersEliminate);
 
 module.exports = router;

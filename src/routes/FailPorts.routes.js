@@ -1,5 +1,6 @@
 const { Router } = require("express");
 const router = Router();
+const authenticate = require("../middlewares/auth.middleware");
 
 const {
   failPortsReadAll,
@@ -9,10 +10,10 @@ const {
   failPortsEliminate,
 } = require("../controllers");
 
-router.get("/ports", failPortsReadAll);
-router.get("/ports/:id", failPortsRead);
-router.post("/ports", failPortsRegister);
-router.put("/ports/:id", failPortsActualize);
-router.delete("/ports/:id", failPortsEliminate);
+router.get("/ports", authenticate, failPortsReadAll);
+router.get("/ports/:id", authenticate, failPortsRead);
+router.post("/ports", authenticate, failPortsRegister);
+router.patch("/ports/:id", authenticate, failPortsActualize);
+router.delete("/ports/:id", authenticate, failPortsEliminate);
 
 module.exports = router;

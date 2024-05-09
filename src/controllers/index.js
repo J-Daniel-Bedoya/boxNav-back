@@ -30,6 +30,16 @@ const {
   townEliminate,
 } = require("./Town.controllers");
 
+const {
+  adminReadAll,
+  adminRead,
+  adminRegister,
+  adminActualize,
+  adminEliminate,
+} = require("./Admin.controllers");
+
+const { adminLogin, deleteLogout } = require("./Auth.controllers");
+
 module.exports = {
   usersReadAll,
   usersRead,
@@ -54,4 +64,13 @@ module.exports = {
   townRegister,
   townActualize,
   townEliminate,
+  //
+  adminReadAll,
+  adminRead,
+  adminRegister,
+  adminActualize,
+  adminEliminate,
+  //
+  adminLogin,
+  deleteLogout,
 };
