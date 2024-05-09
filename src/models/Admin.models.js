@@ -85,7 +85,7 @@ const Admin = db.define(
       autoIncrement: true,
       allowNull: false,
     },
-    AdminName: {
+    adminName: {
       type: DataTypes.STRING,
       allowNull: false,
       field: "admin_name",
@@ -105,10 +105,10 @@ const Admin = db.define(
   },
   {
     hooks: {
-      beforeCreate: (user, options) => {
-        const { password } = user;
+      beforeCreate: (admin, options) => {
+        const { password } = admin;
         const hash = bcrypt.hashSync(password, 8);
-        user.password = hash;
+        admin.password = hash;
       },
     },
   }

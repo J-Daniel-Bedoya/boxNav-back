@@ -38,7 +38,7 @@ const {
   adminEliminate,
 } = require("./Admin.controllers");
 
-const { adminLogin, deleteLogout } = require("./Auth.controllers");
+const { adminLogin, deleteLogout } = require("./auth.controllers");
 
 module.exports = {
   usersReadAll,
