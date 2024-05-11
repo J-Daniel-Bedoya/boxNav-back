@@ -24,22 +24,28 @@ const Boxes = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    ports: {
+    portsNumber: {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
-    failPorts: {
+    portsUsed: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      field: "ports_used",
+    },
+    portsBad: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      field: "fail_ports",
+      field: "ports_bad",
     },
-    address: {
+    sector: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    coordinates: {
+    imgSector: {
       type: DataTypes.STRING,
       allowNull: true,
+      field: "img_sector",
     },
   },
   {

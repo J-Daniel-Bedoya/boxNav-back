@@ -1,9 +1,9 @@
-const { FailPorts, Boxes } = require("../models");
+const { Sectors, Boxes } = require("../models");
 
-class FailPortsServices {
+class SectorsServices {
   static async getAll() {
     try {
-      const result = await FailPorts.findAll();
+      const result = await Sectors.findAll();
       return result;
     } catch (error) {
       throw error;
@@ -11,29 +11,30 @@ class FailPortsServices {
   }
   static async get(id) {
     try {
-      const result = await FailPorts.findOne({
+      const result = await Sectors.findOne({
         where: { id },
+        // include: {
+        //   model: Boxes,
+        //   as: "boxes",
+        //   // attributes: ["id"],
+        // },
       });
       return result;
     } catch (error) {
       throw error;
     }
   }
-  static async create(port) {
+  static async create(sector) {
     try {
-      const box = await Boxes.findByPk(port.boxId);
-      const result = await FailPorts.create(port);
-      box.failPorts += 1;
-      await box.save();
-
+      const result = await Sectors.create(sector);
       return result;
     } catch (error) {
       throw error;
     }
   }
-  static async update(id, port) {
+  static async update(id, sector) {
     try {
-      const result = await FailPorts.update(port, {
+      const result = await Sectors.update(sector, {
         where: { id },
       });
       return result;
@@ -43,7 +44,7 @@ class FailPortsServices {
   }
   static async delete(id) {
     try {
-      const result = await FailPorts.destroy({ where: { id } });
+      const result = await Sectors.destroy({ where: { id } });
       return result;
     } catch (error) {
       throw error;
@@ -51,4 +52,4 @@ class FailPortsServices {
   }
 }
 
-module.exports = FailPortsServices;
+module.exports = SectorsServices;

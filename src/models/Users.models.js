@@ -30,13 +30,13 @@ const Users = db.define(
       },
       allowNull: false,
     },
-    address: {
+    sector: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     tel: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
     service: {
       type: DataTypes.STRING,
@@ -53,7 +53,17 @@ const Users = db.define(
     },
     state: {
       type: DataTypes.BOOLEAN,
+      allowNull: false,
+    },
+    imgSector: {
+      type: DataTypes.STRING,
       allowNull: true,
+      field: "img_sector",
+    },
+    imgMac: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      field: "img_mac",
     },
   },
   {

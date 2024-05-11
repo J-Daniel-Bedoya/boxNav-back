@@ -1,41 +1,41 @@
-const { FailPortsServices } = require("../services");
+const { PortsBadServices } = require("../services");
 
-const failPortsReadAll = async (req, res) => {
+const PortsBadReadAll = async (req, res) => {
   try {
-    const result = await FailPortsServices.getAll();
+    const result = await PortsBadServices.getAll();
     res.status(200).json(result);
   } catch (error) {}
 };
-const failPortsRead = async (req, res) => {
+const PortsBadRead = async (req, res) => {
   try {
     const id = req.params;
-    const result = await FailPortsServices.get(id);
+    const result = await PortsBadServices.get(id);
     res.status(200).json(result);
   } catch (error) {}
 };
-const failPortsRegister = async (req, res) => {
+const PortsBadRegister = async (req, res) => {
   try {
     const port = req.body;
-    const result = await FailPortsServices.create(port);
+    const result = await PortsBadServices.create(port);
     res.status(201).json({ message: "Usuario creado con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
 };
-const failPortsActualize = async (req, res) => {
+const PortsBadActualize = async (req, res) => {
   try {
     const id = req.params;
     const port = req.body;
-    const result = await FailPortsServices.update(id, port);
+    const result = await PortsBadServices.update(id, port);
     res.status(200).json({ message: "Usuario actualizado con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
 };
-const failPortsEliminate = async (req, res) => {
+const PortsBadEliminate = async (req, res) => {
   try {
     const id = req.params;
-    const result = await FailPortsServices.delete(id);
+    const result = await PortsBadServices.delete(id);
     res.status(200).json({ message: "Usuario eliminado con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
@@ -43,9 +43,9 @@ const failPortsEliminate = async (req, res) => {
 };
 
 module.exports = {
-  failPortsReadAll,
-  failPortsRead,
-  failPortsRegister,
-  failPortsActualize,
-  failPortsEliminate,
+  PortsBadReadAll,
+  PortsBadRead,
+  PortsBadRegister,
+  PortsBadActualize,
+  PortsBadEliminate,
 };

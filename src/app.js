@@ -7,7 +7,8 @@ const initModels = require("./models/initModels.models");
 const {
   UsersRoutes,
   BoxesRoutes,
-  FailPortsRoutes,
+  PortsBadRoutes,
+  SectorsRoutes,
   TownRoutes,
   AdminRoutes,
   AuthRoutes,
@@ -31,7 +32,8 @@ db.sync({ alter: true })
 app.use("/app/v1", AuthRoutes);
 app.use("/app/v1", UsersRoutes);
 app.use("/app/v1", BoxesRoutes);
-app.use("/app/v1", FailPortsRoutes);
+app.use("/app/v1", PortsBadRoutes);
+app.use("/app/v1", SectorsRoutes);
 app.use("/app/v1", TownRoutes);
 app.use("/app/v1", AdminRoutes);
 

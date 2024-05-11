@@ -15,12 +15,20 @@ const {
 } = require("./Boxes.controllers");
 
 const {
-  failPortsReadAll,
-  failPortsRead,
-  failPortsRegister,
-  failPortsActualize,
-  failPortsEliminate,
-} = require("./FailPorts.controllers");
+  PortsBadReadAll,
+  PortsBadRead,
+  PortsBadRegister,
+  PortsBadActualize,
+  PortsBadEliminate,
+} = require("./PortsBad.controllers");
+
+const {
+  sectorsReadAll,
+  sectorsRead,
+  sectorsRegister,
+  sectorsActualize,
+  sectorsEliminate,
+} = require("./Sectors.controllers");
 
 const {
   townReadAll,
@@ -53,11 +61,17 @@ module.exports = {
   boxesActualize,
   boxesEliminate,
   //
-  failPortsReadAll,
-  failPortsRead,
-  failPortsRegister,
-  failPortsActualize,
-  failPortsEliminate,
+  PortsBadReadAll,
+  PortsBadRead,
+  PortsBadRegister,
+  PortsBadActualize,
+  PortsBadEliminate,
+  //
+  sectorsReadAll,
+  sectorsRead,
+  sectorsRegister,
+  sectorsActualize,
+  sectorsEliminate,
   //
   townReadAll,
   townRead,

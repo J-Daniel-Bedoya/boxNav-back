@@ -1,7 +1,8 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
+const Town = require("./Town.models");
 
-const Town = db.define("town", {
+const Sectors = db.define("sectors", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -11,6 +12,15 @@ const Town = db.define("town", {
   name: {
     type: DataTypes.STRING,
     allowNull: false,
+  },
+  townId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    references: {
+      model: Town,
+      key: "id",
+      field: "town_id",
+    },
   },
   boxesNumber: {
     type: DataTypes.INTEGER,
@@ -22,11 +32,6 @@ const Town = db.define("town", {
     allowNull: true,
     field: "user_number",
   },
-  sectorsNumber: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    field: "sectors_number",
-  },
 });
 
-module.exports = Town;
+module.exports = Sectors;
