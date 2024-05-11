@@ -7,6 +7,7 @@ class AuthServices {
   static async authenticate(credentials) {
     try {
       const { email, password } = credentials;
+      console.log(credentials);
       const result = await Admin.findOne({
         where: { email },
         attributes: {
@@ -28,6 +29,7 @@ class AuthServices {
     try {
       const token = jwt.sign(data, process.env.SECRET, {
         algorithm: "HS512",
+        expiresIn: "1 day",
       });
       return token;
     } catch (error) {

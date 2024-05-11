@@ -68,7 +68,7 @@ const {
  *                     $ref: "#/components/schemas/users"
  */
 
-router.get("/admin", adminReadAll);
+router.get("/admin", authenticate, adminReadAll);
 router.get("/admin/:id", authenticate, adminRead);
 router.post("/admin", adminRegister);
 router.patch("/admin/:id", authenticate, adminActualize);
