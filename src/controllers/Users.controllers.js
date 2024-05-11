@@ -3,21 +3,21 @@ const { UsersServices } = require("../services");
 const usersReadAll = async (req, res) => {
   try {
     const result = await UsersServices.getAll();
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {}
 };
 const usersRead = async (req, res) => {
   try {
     const id = req.params;
     const result = await UsersServices.get(id);
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {}
 };
 const usersRegister = async (req, res) => {
   try {
     const user = req.body;
     const result = await UsersServices.create(user);
-    res.status(200).json({ message: "Usuario creado con éxito", result });
+    res.status(201).json({ message: "Usuario creado con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -36,7 +36,7 @@ const usersEliminate = async (req, res) => {
   try {
     const id = req.params;
     const result = await UsersServices.delete(id);
-    res.json({ message: "Usuario eliminado con éxito" });
+    res.status(200).json({ message: "Usuario eliminado con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
   }

@@ -17,7 +17,7 @@ const boxesRegister = async (req, res) => {
   try {
     const box = req.body;
     const result = await BoxesServices.create(box);
-    res.status(200).json({ message: "Usuario creado con éxito", result });
+    res.status(201).json({ message: "Usuario creado con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -36,7 +36,7 @@ const boxesEliminate = async (req, res) => {
   try {
     const id = req.params;
     const result = await BoxesServices.delete(id);
-    res.json({ message: "Usuario eliminado con éxito" });
+    res.status(200).json({ message: "Un usuario ha sido eliminado con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
   }

@@ -5,7 +5,7 @@ const { AdminServices } = require("../services");
 const adminReadAll = async (req, res, next) => {
   try {
     const result = await AdminServices.getAll();
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
     next({
       status: 400,
@@ -19,7 +19,7 @@ const adminRead = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await AdminServices.get(id);
-    res.json(result);
+    res.status(200).json(result);
   } catch (error) {
     next({
       status: 400,
@@ -33,7 +33,10 @@ const adminRegister = async (req, res, next) => {
   try {
     const newAdmin = req.body;
     const result = await AdminServices.create(newAdmin);
-    res.status(201).json(result);
+    res.status(201).json({
+      message: "Un nuevo administrador ha sido agregado con éxito",
+      result,
+    });
 
     // transporter.sendMail({
     //   from: "<jbedoyachavarriaga@gmail.com>",
@@ -56,7 +59,10 @@ const adminActualize = async (req, res, next) => {
     const { id } = req.params;
     const admin = req.body;
     const result = await AdminServices.update(id, admin);
-    res.json(result);
+    res.status(200).json({
+      message: "Los datos han sido actualizados correctamente",
+      result,
+    });
   } catch (error) {
     next({
       status: 400,
@@ -70,7 +76,9 @@ const adminEliminate = async (req, res, next) => {
   try {
     const { id } = req.params;
     const result = await AdminServices.delete(id);
-    res.json(result);
+    res
+      .status(200)
+      .json({ message: "Un administrador ha sido eliminado exitosamente" });
   } catch (error) {
     next({
       status: 400,
