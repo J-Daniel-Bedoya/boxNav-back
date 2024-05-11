@@ -12,7 +12,7 @@ class BoxesServices {
   static async get(id) {
     try {
       const result = await Boxes.findOne({
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -34,7 +34,7 @@ class BoxesServices {
   static async update(id, box) {
     try {
       const result = await Boxes.update(box, {
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -43,7 +43,7 @@ class BoxesServices {
   }
   static async delete(id) {
     try {
-      const result = await Boxes.destroy({ where: id });
+      const result = await Boxes.destroy({ where: { id } });
       return result;
     } catch (error) {
       throw error;

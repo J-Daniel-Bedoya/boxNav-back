@@ -12,7 +12,7 @@ class TownServices {
   static async get(id) {
     try {
       const result = await Town.findOne({
-        where: id,
+        where: { id },
         include: {
           model: Boxes,
           as: "boxes",
@@ -35,7 +35,7 @@ class TownServices {
   static async update(id, town) {
     try {
       const result = await Town.update(town, {
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -44,7 +44,7 @@ class TownServices {
   }
   static async delete(id) {
     try {
-      const result = await Town.destroy({ where: id });
+      const result = await Town.destroy({ where: { id } });
       return result;
     } catch (error) {
       throw error;

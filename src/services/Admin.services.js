@@ -12,7 +12,7 @@ class AdminServices {
   static async get(id) {
     try {
       const result = await Admin.findOne({
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -30,7 +30,7 @@ class AdminServices {
   static async update(id, admin) {
     try {
       const result = await Admin.update(admin, {
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -39,7 +39,7 @@ class AdminServices {
   }
   static async delete(id) {
     try {
-      const result = await Admin.destroy({ where: id });
+      const result = await Admin.destroy({ where: { id } });
       return result;
     } catch (error) {
       throw error;

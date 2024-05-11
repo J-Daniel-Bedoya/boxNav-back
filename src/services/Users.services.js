@@ -12,7 +12,7 @@ class UsersServices {
   static async get(id) {
     try {
       const result = await Users.findOne({
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -33,7 +33,7 @@ class UsersServices {
   static async update(id, user) {
     try {
       const result = await Users.update(user, {
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -42,7 +42,7 @@ class UsersServices {
   }
   static async delete(id) {
     try {
-      const result = await Users.destroy({ where: id });
+      const result = await Users.destroy({ where: { id } });
       return result;
     } catch (error) {
       throw error;

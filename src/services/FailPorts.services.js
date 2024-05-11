@@ -12,7 +12,7 @@ class FailPortsServices {
   static async get(id) {
     try {
       const result = await FailPorts.findOne({
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -34,7 +34,7 @@ class FailPortsServices {
   static async update(id, port) {
     try {
       const result = await FailPorts.update(port, {
-        where: id,
+        where: { id },
       });
       return result;
     } catch (error) {
@@ -43,7 +43,7 @@ class FailPortsServices {
   }
   static async delete(id) {
     try {
-      const result = await FailPorts.destroy({ where: id });
+      const result = await FailPorts.destroy({ where: { id } });
       return result;
     } catch (error) {
       throw error;
