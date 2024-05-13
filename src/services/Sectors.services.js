@@ -1,4 +1,4 @@
-const { Sectors, Boxes } = require("../models");
+const { Sectors, Town } = require("../models");
 
 class SectorsServices {
   static async getAll() {

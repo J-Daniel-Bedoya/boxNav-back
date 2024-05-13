@@ -40,7 +40,7 @@ const townEliminate = async (req, res) => {
   try {
     const id = req.params;
     const result = await TownServices.delete(id);
-    res.status(200).json({ message: "Dirección eliminada con éxito" });
+    res.status(200).json({ message: "Pueblo eliminado con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
   }
