@@ -26,7 +26,11 @@ class SectorsServices {
   }
   static async create(sector) {
     try {
+      const town = await Town.findByPk(box.townId);
       const result = await Sectors.create(sector);
+      town.sectorsNumber += 1;
+      await town.save();
+
       return result;
     } catch (error) {
       throw error;

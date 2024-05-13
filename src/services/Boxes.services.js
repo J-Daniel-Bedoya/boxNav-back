@@ -23,7 +23,7 @@ class BoxesServices {
     try {
       const town = await Town.findByPk(box.townId);
       const result = await Boxes.create(box);
-      town.boxNumber += 1;
+      town.boxesNumber += 1;
       await town.save();
 
       return result;

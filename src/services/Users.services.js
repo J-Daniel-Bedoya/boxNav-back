@@ -23,8 +23,9 @@ class UsersServices {
     try {
       const town = await Town.findByPk(user.townId);
       const result = await Users.create(user);
-      town.userNumber += 1;
+      town.usersNumber += 1;
       await town.save();
+
       return result;
     } catch (error) {
       throw error;
