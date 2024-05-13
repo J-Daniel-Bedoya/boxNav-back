@@ -38,11 +38,11 @@ const Boxes = db.define(
       allowNull: true,
       field: "ports_bad",
     },
-    sector: {
-      type: DataTypes.STRING,
-      allowNull: true,
+    sectorId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
     },
-    imgSector: {
+    imgAddres: {
       type: DataTypes.STRING,
       allowNull: true,
       field: "img_sector",
