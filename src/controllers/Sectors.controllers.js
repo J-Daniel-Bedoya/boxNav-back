@@ -8,7 +8,7 @@ const sectorsReadAll = async (req, res) => {
 };
 const sectorsRead = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await SectorsServices.get(id);
     res.status(200).json(result);
   } catch (error) {
@@ -26,7 +26,7 @@ const sectorsRegister = async (req, res) => {
 };
 const sectorsActualize = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const sectors = req.body;
     const result = await SectorsServices.update(id, sectors);
     res
@@ -38,7 +38,7 @@ const sectorsActualize = async (req, res) => {
 };
 const sectorsEliminate = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await SectorsServices.delete(id);
     res.status(200).json({ message: "Dirección eliminada con éxito" });
   } catch (error) {

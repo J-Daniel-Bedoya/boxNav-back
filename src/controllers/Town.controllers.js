@@ -8,7 +8,7 @@ const townReadAll = async (req, res) => {
 };
 const townRead = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await TownServices.get(id);
     res.status(200).json(result);
   } catch (error) {
@@ -26,7 +26,7 @@ const townRegister = async (req, res) => {
 };
 const townActualize = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const town = req.body;
     const result = await TownServices.update(id, town);
     res
@@ -38,7 +38,7 @@ const townActualize = async (req, res) => {
 };
 const townEliminate = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await TownServices.delete(id);
     res.status(200).json({ message: "Pueblo eliminado con éxito" });
   } catch (error) {

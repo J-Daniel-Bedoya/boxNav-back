@@ -8,7 +8,7 @@ const PortsBadReadAll = async (req, res) => {
 };
 const PortsBadRead = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await PortsBadServices.get(id);
     res.status(200).json(result);
   } catch (error) {}
@@ -24,7 +24,7 @@ const PortsBadRegister = async (req, res) => {
 };
 const PortsBadActualize = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const port = req.body;
     const result = await PortsBadServices.update(id, port);
     res.status(200).json({ message: "Usuario actualizado con éxito", result });
@@ -34,7 +34,7 @@ const PortsBadActualize = async (req, res) => {
 };
 const PortsBadEliminate = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await PortsBadServices.delete(id);
     res.status(200).json({ message: "Usuario eliminado con éxito" });
   } catch (error) {

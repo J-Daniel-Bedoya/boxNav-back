@@ -8,7 +8,7 @@ const usersReadAll = async (req, res) => {
 };
 const usersRead = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await UsersServices.get(id);
     res.status(200).json(result);
   } catch (error) {}
@@ -24,7 +24,7 @@ const usersRegister = async (req, res) => {
 };
 const usersActualize = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const user = req.body;
     const result = await UsersServices.update(id, user);
     res.status(200).json({ message: "Usuario actualizado con éxito", result });
@@ -34,7 +34,7 @@ const usersActualize = async (req, res) => {
 };
 const usersEliminate = async (req, res) => {
   try {
-    const id = req.params;
+    const { id } = req.params;
     const result = await UsersServices.delete(id);
     res.status(200).json({ message: "Usuario eliminado con éxito" });
   } catch (error) {
