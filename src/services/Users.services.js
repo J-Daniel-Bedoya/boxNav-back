@@ -1,4 +1,4 @@
-const { Users, Town } = require("../models");
+const { Users, Town, Sectors, Boxes } = require("../models");
 
 class UsersServices {
   static async getAll() {
@@ -22,9 +22,15 @@ class UsersServices {
   static async create(user) {
     try {
       const town = await Town.findByPk(user.townId);
+      const sector = await Sectors.findByPk(user.sectorId);
+      const box = await Boxes.findByPk(user.boxId);
       const result = await Users.create(user);
       town.usersNumber += 1;
+      sector.usersNumber += 1;
+      box.portUsed += 1;
       await town.save();
+      await sector.save();
+      await box.save();
 
       return result;
     } catch (error) {

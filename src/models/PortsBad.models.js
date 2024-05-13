@@ -3,8 +3,8 @@ const DataTypes = require("sequelize");
 const Boxes = require("./Boxes.models");
 const Town = require("./Town.models");
 
-const FailPorts = db.define(
-  "failPorts",
+const PortsBad = db.define(
+  "portsBad",
   {
     id: {
       type: DataTypes.INTEGER,
@@ -44,4 +44,4 @@ const FailPorts = db.define(
   }
 );
 
-module.exports = FailPorts;
+module.exports = PortsBad;

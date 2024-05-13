@@ -30,8 +30,8 @@ const Users = db.define(
       },
       allowNull: false,
     },
-    sector: {
-      type: DataTypes.STRING,
+    sectorId: {
+      type: DataTypes.INTEGER,
       allowNull: false,
     },
     tel: {
