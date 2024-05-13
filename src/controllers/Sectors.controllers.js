@@ -17,9 +17,9 @@ const sectorsRead = async (req, res) => {
 };
 const sectorsRegister = async (req, res) => {
   try {
-    const sectors = req.body;
-    const result = await SectorsServices.create(sectors);
-    res.status(201).json({ message: "Dirección creada con éxito", result });
+    const sector = req.body;
+    const result = await SectorsServices.create(sector);
+    res.status(201).json({ message: "Sector creado con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -29,9 +29,7 @@ const sectorsActualize = async (req, res) => {
     const { id } = req.params;
     const sectors = req.body;
     const result = await SectorsServices.update(id, sectors);
-    res
-      .status(200)
-      .json({ message: "Dirección actualizada con éxito", result });
+    res.status(200).json({ message: "Sector actualizado con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -40,7 +38,7 @@ const sectorsEliminate = async (req, res) => {
   try {
     const { id } = req.params;
     const result = await SectorsServices.delete(id);
-    res.status(200).json({ message: "Dirección eliminada con éxito" });
+    res.status(200).json({ message: "Sector eliminado con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
   }

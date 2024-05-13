@@ -1,4 +1,4 @@
-const { Sectors, Town } = require("../models");
+const { Sectors, Town, Boxes } = require("../models");
 
 class SectorsServices {
   static async getAll() {
@@ -13,11 +13,13 @@ class SectorsServices {
     try {
       const result = await Sectors.findOne({
         where: { id },
-        // include: {
-        //   model: Boxes,
-        //   as: "boxes",
-        //   // attributes: ["id"],
-        // },
+        include: {
+          model: Boxes,
+          as: "boxes",
+          attributes: {
+            exclude: [""],
+          },
+        },
       });
       return result;
     } catch (error) {
@@ -26,7 +28,7 @@ class SectorsServices {
   }
   static async create(sector) {
     try {
-      const town = await Town.findByPk(box.townId);
+      const town = await Town.findByPk(sector.townId);
       const result = await Sectors.create(sector);
       town.sectorsNumber += 1;
       await town.save();

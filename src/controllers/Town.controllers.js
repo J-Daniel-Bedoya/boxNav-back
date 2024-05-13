@@ -19,7 +19,7 @@ const townRegister = async (req, res) => {
   try {
     const town = req.body;
     const result = await TownServices.create(town);
-    res.status(201).json({ message: "Dirección creada con éxito", result });
+    res.status(201).json({ message: "Pueblo creado con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -29,9 +29,7 @@ const townActualize = async (req, res) => {
     const { id } = req.params;
     const town = req.body;
     const result = await TownServices.update(id, town);
-    res
-      .status(200)
-      .json({ message: "Dirección actualizada con éxito", result });
+    res.status(200).json({ message: "Pueblo actualizadao con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }

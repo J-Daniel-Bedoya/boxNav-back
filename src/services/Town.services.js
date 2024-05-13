@@ -1,4 +1,4 @@
-const { Town, Boxes } = require("../models");
+const { Town, Boxes, Users, Sectors } = require("../models");
 
 class TownServices {
   static async getAll() {
@@ -13,11 +13,36 @@ class TownServices {
     try {
       const result = await Town.findOne({
         where: { id },
-        include: {
-          model: Boxes,
-          as: "boxes",
-          // attributes: ["id"],
-        },
+        include: [
+          {
+            model: Boxes,
+            as: "boxes",
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+          {
+            model: Users,
+            as: "users",
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+          {
+            model: Sectors,
+            as: "sectors",
+            include: {
+              model: Boxes,
+              as: "boxes",
+              attributes: {
+                exclude: [""],
+              },
+            },
+            attributes: {
+              exclude: ["createdAt", "updatedAt"],
+            },
+          },
+        ],
       });
       return result;
     } catch (error) {
