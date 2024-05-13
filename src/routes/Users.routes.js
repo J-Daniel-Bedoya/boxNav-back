@@ -10,10 +10,10 @@ const {
   usersEliminate,
 } = require("../controllers");
 
-router.get("/users", authenticate, usersReadAll);
-router.get("/users/:id", authenticate, usersRead);
-router.post("/users", authenticate, usersRegister);
-router.patch("/users/:id", authenticate, usersActualize);
-router.delete("/users/:id", authenticate, usersEliminate);
+router.get("/user", authenticate, usersReadAll);
+router.get("/user/:id", authenticate, usersRead);
+router.post("/user", authenticate, usersRegister);
+router.patch("/user/:id", authenticate, usersActualize);
+router.delete("/user/:id", authenticate, usersEliminate);
 
 module.exports = router;

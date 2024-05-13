@@ -10,10 +10,10 @@ const {
   sectorsEliminate,
 } = require("../controllers");
 
-router.get("/sectors", authenticate, sectorsReadAll);
-router.get("/sectors/:id", authenticate, sectorsRead);
-router.post("/sectors", authenticate, sectorsRegister);
-router.patch("/sectors/:id", authenticate, sectorsActualize);
-router.delete("/sectors/:id", authenticate, sectorsEliminate);
+router.get("/sector", authenticate, sectorsReadAll);
+router.get("/sector/:id", authenticate, sectorsRead);
+router.post("/sector", authenticate, sectorsRegister);
+router.patch("/sector/:id", authenticate, sectorsActualize);
+router.delete("/sector/:id", authenticate, sectorsEliminate);
 
 module.exports = router;

@@ -10,10 +10,10 @@ const {
   boxesEliminate,
 } = require("../controllers");
 
-router.get("/boxes", authenticate, boxesReadAll);
-router.get("/boxes/:id", authenticate, boxesRead);
-router.post("/boxes", authenticate, boxesRegister);
-router.patch("/boxes/:id", authenticate, boxesActualize);
-router.delete("/boxes/:id", authenticate, boxesEliminate);
+router.get("/box", authenticate, boxesReadAll);
+router.get("/box/:id", authenticate, boxesRead);
+router.post("/box", authenticate, boxesRegister);
+router.patch("/box/:id", authenticate, boxesActualize);
+router.delete("/box/:id", authenticate, boxesEliminate);
 
 module.exports = router;

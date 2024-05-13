@@ -10,10 +10,10 @@ const {
   PortsBadEliminate,
 } = require("../controllers");
 
-router.get("/ports", authenticate, PortsBadReadAll);
-router.get("/ports/:id", authenticate, PortsBadRead);
-router.post("/ports", authenticate, PortsBadRegister);
-router.patch("/ports/:id", authenticate, PortsBadActualize);
-router.delete("/ports/:id", authenticate, PortsBadEliminate);
+router.get("/port", authenticate, PortsBadReadAll);
+router.get("/port/:id", authenticate, PortsBadRead);
+router.post("/port", authenticate, PortsBadRegister);
+router.patch("/port/:id", authenticate, PortsBadActualize);
+router.delete("/port/:id", authenticate, PortsBadEliminate);
 
 module.exports = router;
