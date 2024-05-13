@@ -15,12 +15,12 @@ const Town = db.define("town", {
   boxesNumber: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "box_number",
+    field: "boxes_number",
   },
   usersNumber: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "user_number",
+    field: "users_number",
   },
   sectorsNumber: {
     type: DataTypes.INTEGER,
