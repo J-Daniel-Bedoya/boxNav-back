@@ -18,7 +18,7 @@ const {
 
 /**
  * @swagger
- * /app/v1/admin:
+ * /api/v1/admin:
  *   get:
  *     summary: Obtiene todos los administradores
  *     tags: [Admin]
@@ -37,7 +37,7 @@ const {
 
 /**
  * @swagger
- * /app/v1/admin/{id}:
+ * /api/v1/admin/{id}:
  *   get:
  *     summary: Obtiene un administrador por su ID
  *     tags: [Admin]
@@ -64,7 +64,7 @@ const {
 
 /**
  * @swagger
- * /app/v1/admin:
+ * /api/v1/admin:
  *   post:
  *     summary: Registra un nuevo administrador
  *     tags: [Admin]
@@ -81,7 +81,7 @@ const {
 
 /**
  * @swagger
- * /app/v1/admin/{id}:
+ * /api/admin/{id}:
  *   patch:
  *     summary: Actualiza un administrador por su ID
  *     tags: [Admin]
@@ -110,7 +110,7 @@ const {
 
 /**
  * @swagger
- * /app/v1/admin/{id}:
+ * /api/admin/{id}:
  *   delete:
  *     summary: Elimina un administrador por su ID
  *     tags: [Admin]
