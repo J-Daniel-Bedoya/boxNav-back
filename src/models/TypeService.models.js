@@ -1,6 +1,23 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
 
+/**
+ * @swagger
+ * components:
+ *   schemas:
+ *     TypeService:
+ *       type: object
+ *       properties:
+ *         name:
+ *           type: string
+ *           description: Nombre del tipo de servicio
+ *         usersNumber:
+ *           type: integer
+ *           format: int8
+ *           nullable: true
+ *           description: Número de usuarios relacionados con este tipo de servicio (opcional)
+ */
+
 const TypeService = db.define("typeService", {
   id: {
     type: DataTypes.INTEGER,

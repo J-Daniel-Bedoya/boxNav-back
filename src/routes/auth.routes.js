@@ -4,65 +4,63 @@ const authenticate = require("../middlewares/auth.middleware");
 const { adminLogin, deleteLogout } = require("../controllers");
 
 /**
- * @openapi
+ * @swagger
+ * tags:
+ *   name: Authentication
+ *   description: Operaciones de autenticación para administradores
+ */
+
+/**
+ * @swagger
  * /api/v1/auth/login:
  *   post:
- *     summary: Start session in the app
- *     tags: [Auth]
+ *     summary: Inicia sesión de un administrador
+ *     tags: [Authentication]
  *     requestBody:
- *       description: Start a new section in the app to obtain the privileges to make operations.
  *       required: true
  *       content:
  *         application/json:
  *           schema:
- *             $ref: "#/components/schemas/login"
+ *             type: object
+ *             required:
+ *               - email
+ *               - password
+ *             properties:
+ *               email:
+ *                 type: string
+ *                 format: email
+ *                 description: Correo electrónico del administrador
+ *               password:
+ *                 type: string
+ *                 format: password
+ *                 description: Contraseña del administrador
  *     responses:
- *       201:
- *         description: entering the app
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/request_auth"
+ *       200:
+ *         description: Inicio de sesión exitoso
+ *       401:
+ *         description: Credenciales inválidas
+ *       500:
+ *         description: Error interno del servidor
+ */
+
+/**
+ * @swagger
  * /api/v1/auth/logout:
  *   delete:
  *     security:
  *       - bearerAuth: []
- *     summary: delete a user in the app
- *     tags: [Auth]
- *     requestBody:
- *       description: remove an existing user from the app
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: "#/components/schemas/logout"
+ *     summary: Cierra sesión de un administrador
+ *     tags: [Authentication]
  *     responses:
- *       201:
- *         description: entering the app
- *         content:
- *           application/json:
- *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/request_logout"
+ *       200:
+ *         description: Cierre de sesión exitoso
+ *       401:
+ *         description: No se pudo cerrar sesión debido a la falta de autenticación
+ *       500:
+ *         description: Error interno del servidor
  */
 
 router.post("/auth/login", adminLogin);
-
 router.delete("/auth/logout", authenticate, deleteLogout);
 
 module.exports = router;

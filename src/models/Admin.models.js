@@ -3,72 +3,40 @@ const { DataTypes } = require("sequelize");
 const bcrypt = require("bcrypt");
 
 /**
- * @openapi
+ * @swagger
  * components:
  *   schemas:
- *     users:
+ *     Admin:
  *       type: object
  *       properties:
- *         id:
- *           type: number
- *           example: 1
- *         username:
+ *         adminName:
  *           type: string
- *           example: Jose Daniel
+ *           description: Nombre del administrador
  *         email:
  *           type: string
- *           example: josedaniel37@gmail.com
- *     register:
- *       type: object
- *       properties:
- *         username:
- *           type: string
- *           example: Jose Daniel
- *         email:
- *           type: string
- *           example: josedaniel37@gmail.com
+ *           format: email
+ *           description: Correo electrónico del administrador
  *         password:
  *           type: string
- *           example: 1234
+ *           format: password
+ *           description: Contraseña del administrador (se almacenará encriptada)
  *     login:
- *       type: object
- *       properties:
- *         email:
- *           type: string
- *           example: josedaniel37@gmail.com
- *         password:
- *           type: string
- *           example: 1234
- *     request_auth:
- *       type: object
- *       properties:
  *         id:
  *           type: number
  *           example: 1
- *         username:
- *           type: string
- *           example: Jose Daniel
  *         email:
  *           type: string
- *           example: josedaniel37@gmail.com
+ *           format: email
  *         token:
  *           type: string
- *           example: "eyJhbGciOiJIUzUxMiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Impvc2VkYW5pZWxAZ21haWwuY29tIiwiaWQiOjQsImlhdCI6"
- *     request_logout:
- *       type: object
- *       properties:
- *         message:
- *           type: string
- *           example: Usuario eliminado con exito
- *     logout:
- *       type: object
- *       properties:
+ *           format: token
+ *     registerLogin:
  *         email:
  *           type: string
- *           example: josedaniel37@gmail.com
+ *           format: email
  *         password:
  *           type: string
- *           example: 1234
+ *           format: password
  *   securitySchemes:
  *     bearerAuth:
  *       type: http

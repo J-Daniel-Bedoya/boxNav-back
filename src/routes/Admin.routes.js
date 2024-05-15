@@ -10,62 +10,125 @@ const {
 } = require("../controllers");
 
 /**
- * @openapi
- * /api/v1/users:
- *   post:
- *     summary: Register a new user into the app
- *     tags: [Users]
- *     requestBody:
- *       description: To register a new user you need a username, email and password
- *       required: true
- *       content:
- *         application/json:
- *           schema:
- *             $ref: "#/components/schemas/register"
+ * @swagger
+ * tags:
+ *   name: Admin
+ *   description: Operaciones relacionadas con administradores
+ */
+
+/**
+ * @swagger
+ * /app/v1/admin:
+ *   get:
+ *     summary: Obtiene todos los administradores
+ *     tags: [Admin]
+ *     security:
+ *       - bearerAuth: []
  *     responses:
- *       201:
- *         description: created
+ *       200:
+ *         description: Lista de administradores
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/users"
- * /api/v1/users/{id}:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/Admin'
+ */
+
+/**
+ * @swagger
+ * /app/v1/admin/{id}:
  *   get:
- *     security:
- *       - bearerAuth: []
- *     summary: See the data of a user in the app
- *     tags: [Users]
+ *     summary: Obtiene un administrador por su ID
+ *     tags: [Admin]
  *     parameters:
  *       - in: path
  *         name: id
  *         required: true
  *         schema:
  *           type: integer
- *           minimum: 1
- *         description: user Id
+ *           format: int32
+ *         description: ID del administrador
+ *     security:
+ *       - bearerAuth: []
  *     responses:
  *       200:
- *         description: Data displayed successfully
+ *         description: Detalles del administrador
  *         content:
  *           application/json:
  *             schema:
- *               type: object
- *               properties:
- *                 status:
- *                   type: string
- *                   example: OK
- *                 data:
- *                   type: array
- *                   items:
- *                     $ref: "#/components/schemas/users"
+ *               $ref: '#/components/schemas/Admin'
+ *       404:
+ *         description: Administrador no encontrado
+ */
+
+/**
+ * @swagger
+ * /app/v1/admin:
+ *   post:
+ *     summary: Registra un nuevo administrador
+ *     tags: [Admin]
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Admin'
+ *     responses:
+ *       201:
+ *         description: Administrador creado exitosamente
+ */
+
+/**
+ * @swagger
+ * /app/v1/admin/{id}:
+ *   patch:
+ *     summary: Actualiza un administrador por su ID
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID del administrador
+ *     requestBody:
+ *       required: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             $ref: '#/components/schemas/Admin'
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Administrador actualizado exitosamente
+ *       404:
+ *         description: Administrador no encontrado
+ */
+
+/**
+ * @swagger
+ * /app/v1/admin/{id}:
+ *   delete:
+ *     summary: Elimina un administrador por su ID
+ *     tags: [Admin]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID del administrador
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Administrador eliminado exitosamente
+ *       404:
+ *         description: Administrador no encontrado
  */
 
 router.get("/admin", authenticate, adminReadAll);

@@ -4,6 +4,48 @@ const Boxes = require("./Boxes.models");
 const Town = require("./Town.models");
 const Sectors = require("./Sectors.models");
 
+/**
+ * @openapi
+ * components:
+ *   schemas:
+ *     Users:
+ *       type: object
+ *       properties:
+ *         townId:
+ *           type: integer
+ *           format: int8
+ *           description: ID del municipio al que pertenece el usuario
+ *         sectorId:
+ *           type: integer
+ *           format: int8
+ *           description: ID del sector al que pertenece el usuario
+ *         boxId:
+ *           type: integer
+ *           format: int8
+ *           description: ID de la casilla asignada al usuario
+ *         name:
+ *           type: string
+ *           description: Nombre del usuario
+ *         port:
+ *           type: integer
+ *           description: Puerto del usuario
+ *         tel:
+ *           type: string
+ *           description: Número de teléfono del usuario
+ *         service:
+ *           type: string
+ *           description: Tipo de servicio del usuario
+ *         state:
+ *           type: boolean
+ *           description: Estado del usuario (activo/inactivo)
+ *         coordinates:
+ *           type: string
+ *           description: Coordenadas del usuario (opcional)
+ *         imgMac:
+ *           type: string
+ *           description: Imagen MAC del usuario (opcional)
+ */
+
 const Users = db.define(
   "users",
   {
