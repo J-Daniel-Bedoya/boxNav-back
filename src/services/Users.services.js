@@ -1,4 +1,4 @@
-const { Users, Town, Sectors, Boxes } = require("../models");
+const { Users, Town, Sectors, Boxes, TypeService } = require("../models");
 
 class UsersServices {
   static async getAll() {
@@ -24,13 +24,19 @@ class UsersServices {
       const town = await Town.findByPk(user.townId);
       const sector = await Sectors.findByPk(user.sectorId);
       const box = await Boxes.findByPk(user.boxId);
+      const service = await TypeService.findByPk(user.serviceId);
+
       const result = await Users.create(user);
+
       town.usersNumber += 1;
       sector.usersNumber += 1;
       box.portUsed += 1;
+      service.usersNumber += 1;
+
       await town.save();
       await sector.save();
       await box.save();
+      await service.save();
 
       return result;
     } catch (error) {
@@ -47,9 +53,25 @@ class UsersServices {
       throw error;
     }
   }
-  static async delete(id) {
+  static async delete(id, user) {
     try {
+      const town = await Town.findByPk(user.townId);
+      const sector = await Sectors.findByPk(user.sectorId);
+      const box = await Boxes.findByPk(user.boxId);
+      const service = await TypeService.findByPk(user.serviceId);
+
       const result = await Users.destroy({ where: { id } });
+
+      town.usersNumber -= 1;
+      sector.usersNumber -= 1;
+      box.portUsed -= 1;
+      service.usersNumber -= 1;
+
+      await town.save();
+      await sector.save();
+      await box.save();
+      await service.save();
+
       return result;
     } catch (error) {
       throw error;

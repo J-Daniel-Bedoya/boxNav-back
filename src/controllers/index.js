@@ -37,6 +37,13 @@ const {
   townActualize,
   townEliminate,
 } = require("./Town.controllers");
+const {
+  serviceReadAll,
+  serviceRead,
+  serviceRegister,
+  serviceActualize,
+  serviceEliminate,
+} = require("./TypeService.controllers");
 
 const {
   adminReadAll,
@@ -78,6 +85,12 @@ module.exports = {
   townRegister,
   townActualize,
   townEliminate,
+  //
+  serviceReadAll,
+  serviceRead,
+  serviceRegister,
+  serviceActualize,
+  serviceEliminate,
   //
   adminReadAll,
   adminRead,

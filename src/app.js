@@ -12,6 +12,7 @@ const {
   TownRoutes,
   AdminRoutes,
   AuthRoutes,
+  TypeServiceRoutes,
 } = require("./routes");
 
 const app = express();
@@ -36,6 +37,7 @@ app.use("/app/v1", PortsBadRoutes);
 app.use("/app/v1", SectorsRoutes);
 app.use("/app/v1", TownRoutes);
 app.use("/app/v1", AdminRoutes);
+app.use("/app/v1", TypeServiceRoutes);
 
 app.get("/", (req, res) => {
   res.status(200).json({

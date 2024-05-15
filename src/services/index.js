@@ -5,6 +5,7 @@ const TownServices = require("./Town.services");
 const AdminServices = require("./Admin.services");
 const AuthServices = require("./auth.services");
 const SectorsServices = require("./Sectors.services");
+const TypeServiceServices = require("./TypeService.services");
 
 module.exports = {
   UsersServices,
@@ -14,4 +15,5 @@ module.exports = {
   AdminServices,
   AuthServices,
   SectorsServices,
+  TypeServiceServices,
 };

@@ -30,6 +30,7 @@ class SectorsServices {
     try {
       const town = await Town.findByPk(sector.townId);
       const result = await Sectors.create(sector);
+
       town.sectorsNumber += 1;
       await town.save();
 
@@ -48,9 +49,14 @@ class SectorsServices {
       throw error;
     }
   }
-  static async delete(id) {
+  static async delete(id, sector) {
     try {
+      const town = await Town.findByPk(sector.townId);
       const result = await Sectors.destroy({ where: { id } });
+
+      town.sectorsNumber -= 1;
+      await town.save();
+
       return result;
     } catch (error) {
       throw error;

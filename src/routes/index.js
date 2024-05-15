@@ -5,6 +5,7 @@ const TownRoutes = require("./Town.routes");
 const AdminRoutes = require("./Admin.routes");
 const AuthRoutes = require("./auth.routes");
 const SectorsRoutes = require("./Sectors.routes");
+const TypeServiceRoutes = require("./TypeService.routes");
 
 module.exports = {
   UsersRoutes,
@@ -14,4 +15,5 @@ module.exports = {
   AdminRoutes,
   AuthRoutes,
   SectorsRoutes,
+  TypeServiceRoutes,
 };

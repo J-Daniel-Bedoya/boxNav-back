@@ -23,7 +23,9 @@ class BoxesServices {
     try {
       const town = await Town.findByPk(box.townId);
       const sector = await Sectors.findByPk(box.sectorId);
+
       const result = await Boxes.create(box);
+
       town.boxesNumber += 1;
       sector.boxesNumber += 1;
       await town.save();
@@ -46,7 +48,16 @@ class BoxesServices {
   }
   static async delete(id) {
     try {
+      const town = await Town.findByPk(box.townId);
+      const sector = await Sectors.findByPk(box.sectorId);
+
       const result = await Boxes.destroy({ where: { id } });
+
+      town.boxesNumber -= 1;
+      sector.boxesNumber -= 1;
+      await town.save();
+      await sector.save();
+
       return result;
     } catch (error) {
       throw error;

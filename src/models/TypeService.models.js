@@ -1,7 +1,7 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
 
-const Town = db.define("town", {
+const TypeService = db.define("typeService", {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -12,21 +12,11 @@ const Town = db.define("town", {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  boxesNumber: {
+  usersNumber: {
     type: DataTypes.INTEGER,
     allowNull: true,
     field: "boxes_number",
   },
-  usersNumber: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    field: "users_number",
-  },
-  sectorsNumber: {
-    type: DataTypes.INTEGER,
-    allowNull: true,
-    field: "sectors_number",
-  },
 });
 
-module.exports = Town;
+module.exports = TypeService;

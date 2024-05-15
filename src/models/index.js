@@ -4,6 +4,7 @@ const Users = require("./Users.models");
 const Town = require("./Town.models");
 const Admin = require("./Admin.models");
 const Sectors = require("./Sectors.models");
+const TypeService = require("./TypeService.models");
 
 module.exports = {
   Boxes,
@@ -12,4 +13,5 @@ module.exports = {
   Town,
   Admin,
   Sectors,
+  TypeService,
 };

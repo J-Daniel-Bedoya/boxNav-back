@@ -2,6 +2,7 @@ const db = require("../utils/database");
 const DataTypes = require("sequelize");
 const Boxes = require("./Boxes.models");
 const Town = require("./Town.models");
+const Sectors = require("./Sectors.models");
 
 const Users = db.define(
   "users",
@@ -10,14 +11,6 @@ const Users = db.define(
       type: DataTypes.INTEGER,
       primaryKey: true,
       autoIncrement: true,
-      allowNull: false,
-    },
-    name: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    port: {
-      type: DataTypes.INTEGER,
       allowNull: false,
     },
     townId: {
@@ -33,14 +26,11 @@ const Users = db.define(
     sectorId: {
       type: DataTypes.INTEGER,
       allowNull: false,
-    },
-    tel: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    service: {
-      type: DataTypes.STRING,
-      allowNull: false,
+      field: "sector_id",
+      references: {
+        model: Sectors,
+        key: "id",
+      },
     },
     boxId: {
       type: DataTypes.INTEGER,
@@ -51,14 +41,30 @@ const Users = db.define(
       },
       field: "box_id",
     },
+    name: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    port: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
+
+    tel: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    service: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
     state: {
       type: DataTypes.BOOLEAN,
       allowNull: false,
     },
-    imgSector: {
+    coordinates: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: "img_sector",
     },
     imgMac: {
       type: DataTypes.STRING,

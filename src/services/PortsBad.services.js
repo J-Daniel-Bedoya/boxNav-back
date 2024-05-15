@@ -23,6 +23,7 @@ class PortsBadServices {
     try {
       const box = await Boxes.findByPk(port.boxId);
       const result = await PortsBad.create(port);
+
       box.portsBad += 1;
       await box.save();
 
@@ -43,7 +44,12 @@ class PortsBadServices {
   }
   static async delete(id) {
     try {
+      const box = await Boxes.findByPk(port.boxId);
       const result = await PortsBad.destroy({ where: { id } });
+
+      box.portsBad -= 1;
+      await box.save();
+
       return result;
     } catch (error) {
       throw error;

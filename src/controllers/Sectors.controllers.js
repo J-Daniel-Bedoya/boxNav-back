@@ -37,7 +37,8 @@ const sectorsActualize = async (req, res) => {
 const sectorsEliminate = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await SectorsServices.delete(id);
+    const sector = req.body;
+    const result = await SectorsServices.delete(id, sector);
     res.status(200).json({ message: "Sector eliminado con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
