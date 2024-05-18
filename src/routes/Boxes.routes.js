@@ -19,7 +19,7 @@ const {
 
 /**
  * @swagger
- * /api/v1/box:
+ * /api/v1/town/:id/box:
  *   get:
  *     summary: Obtiene todas las cajas
  *     tags: [Boxes]
@@ -38,7 +38,7 @@ const {
 
 /**
  * @swagger
- * /api/v1/box/{id}:
+ * /api/v1/town/:id/box/{id}:
  *   get:
  *     summary: Obtiene una caja por su ID
  *     tags: [Boxes]
@@ -65,7 +65,7 @@ const {
 
 /**
  * @swagger
- * /api/v1/box:
+ * /api/v1/town/:id/box:
  *   post:
  *     summary: Registra una nueva caja
  *     tags: [Boxes]
@@ -84,7 +84,7 @@ const {
 
 /**
  * @swagger
- * /api/v1/box/{id}:
+ * /api/v1/town/:id/box/{id}:
  *   patch:
  *     summary: Actualiza una caja por su ID
  *     tags: [Boxes]
@@ -113,7 +113,7 @@ const {
 
 /**
  * @swagger
- * /api/v1/box/{id}:
+ * /api/v1/town/:id/box/{id}:
  *   delete:
  *     summary: Elimina una caja por su ID
  *     tags: [Boxes]
