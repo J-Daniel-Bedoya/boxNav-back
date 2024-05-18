@@ -52,6 +52,10 @@ const Boxes = db.define(
       },
       field: "town_id",
     },
+    sectorId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+    },
     number: {
       type: DataTypes.INTEGER,
       allowNull: false,
@@ -70,10 +74,7 @@ const Boxes = db.define(
       allowNull: true,
       field: "ports_bad",
     },
-    sectorId: {
-      type: DataTypes.INTEGER,
-      allowNull: false,
-    },
+
     coordinates: {
       type: DataTypes.STRING,
       allowNull: true,
