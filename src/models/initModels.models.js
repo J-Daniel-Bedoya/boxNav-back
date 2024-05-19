@@ -1,7 +1,15 @@
-const { Users, Boxes, PortsBad, Town, Sectors, TypeService } = require(".");
+const {
+  Users,
+  Boxes,
+  PortsBad,
+  Town,
+  Sectors,
+  TypeService,
+  Admin,
+} = require(".");
 
 const initModels = () => {
-  Users, Boxes, PortsBad, Town, Sectors, TypeService;
+  Users, Boxes, PortsBad, Town, Sectors, TypeService, Admin;
   Town.hasMany(Boxes, { foreignKey: "townId", as: "boxes" });
   Town.hasMany(Users, { foreignKey: "townId", as: "users" });
   Town.hasMany(Sectors, { foreignKey: "townId", as: "sectors" });
