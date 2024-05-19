@@ -31,10 +31,10 @@ db.sync({ alter: true })
   .catch((err) => console.log(err));
 
 app.use("/api/v1", AuthRoutes);
-app.use("/api/v1/town/:id", UsersRoutes);
-app.use("/api/v1/town/:id", BoxesRoutes);
+app.use("/api/v1", UsersRoutes);
+app.use("/api/v1", BoxesRoutes);
 app.use("/api/v1", PortsBadRoutes);
-app.use("/api/v1/town/:id", SectorsRoutes);
+app.use("/api/v1", SectorsRoutes);
 app.use("/api/v1", TownRoutes);
 app.use("/api/v1", AdminRoutes);
 app.use("/api/v1", TypeServiceRoutes);
