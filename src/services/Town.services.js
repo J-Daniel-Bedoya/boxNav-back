@@ -17,14 +17,7 @@ class TownServices {
           {
             model: Sectors,
             as: "sectors",
-            include: {
-              model: Boxes,
-              as: "boxes",
-              attributes: ["name"],
-            },
-            attributes: {
-              exclude: ["createdAt", "updatedAt"],
-            },
+            attributes: ["name"],
           },
           {
             model: Boxes,
