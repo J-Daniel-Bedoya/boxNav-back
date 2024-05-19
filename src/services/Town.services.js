@@ -22,7 +22,7 @@ class TownServices {
           {
             model: Boxes,
             as: "boxes",
-            attributes: ["boxNumber", "portsUsed", "sectorId", "porstNumber"],
+            attributes: ["boxNumber", "portsUsed", "sectorId", "portsNumber"],
           },
           {
             model: Users,
