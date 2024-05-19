@@ -99,7 +99,7 @@ const Users = db.define(
       allowNull: false,
     },
     typeService: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: TypeService,
