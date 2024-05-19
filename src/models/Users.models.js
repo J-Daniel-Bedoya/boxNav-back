@@ -3,6 +3,7 @@ const DataTypes = require("sequelize");
 const Boxes = require("./Boxes.models");
 const Town = require("./Town.models");
 const Sectors = require("./Sectors.models");
+const TypeService = require("./TypeService.models");
 
 /**
  * @openapi
@@ -83,11 +84,12 @@ const Users = db.define(
       },
       field: "box_id",
     },
-    name: {
+    userName: {
       type: DataTypes.STRING,
       allowNull: false,
+      field: "user_name",
     },
-    port: {
+    portNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
@@ -96,9 +98,14 @@ const Users = db.define(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    service: {
+    typeService: {
       type: DataTypes.STRING,
       allowNull: false,
+      references: {
+        model: TypeService,
+        key: "id",
+      },
+      field: "type_service",
     },
     state: {
       type: DataTypes.BOOLEAN,

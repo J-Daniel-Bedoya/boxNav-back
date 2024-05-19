@@ -35,9 +35,10 @@ const Town = db.define("town", {
     autoIncrement: true,
     allowNull: false,
   },
-  name: {
+  townName: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "town_name",
   },
   boxesNumber: {
     type: DataTypes.INTEGER,

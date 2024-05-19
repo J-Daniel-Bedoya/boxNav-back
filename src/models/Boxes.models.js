@@ -56,9 +56,10 @@ const Boxes = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    number: {
+    boxNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: "box_number",
     },
     portsNumber: {
       type: DataTypes.INTEGER,

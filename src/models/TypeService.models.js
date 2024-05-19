@@ -25,9 +25,10 @@ const TypeService = db.define("typeService", {
     autoIncrement: true,
     allowNull: false,
   },
-  name: {
+  serviceName: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "service_name",
   },
   usersNumber: {
     type: DataTypes.INTEGER,

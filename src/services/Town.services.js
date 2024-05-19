@@ -15,32 +15,26 @@ class TownServices {
         where: { id },
         include: [
           {
-            model: Boxes,
-            as: "boxes",
-            attributes: {
-              exclude: ["createdAt", "updatedAt"],
-            },
-          },
-          {
-            model: Users,
-            as: "users",
-            attributes: {
-              exclude: ["createdAt", "updatedAt"],
-            },
-          },
-          {
             model: Sectors,
             as: "sectors",
             include: {
               model: Boxes,
               as: "boxes",
-              attributes: {
-                exclude: [""],
-              },
+              attributes: ["name"],
             },
             attributes: {
               exclude: ["createdAt", "updatedAt"],
             },
+          },
+          {
+            model: Boxes,
+            as: "boxes",
+            attributes: ["boxNumber", "portsUsed", "sectorId", "porstNumber"],
+          },
+          {
+            model: Users,
+            as: "users",
+            attributes: ["userName", "boxId", "portNumber", "typeService"],
           },
         ],
       });

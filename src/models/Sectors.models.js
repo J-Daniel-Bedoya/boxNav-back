@@ -35,9 +35,10 @@ const Sectors = db.define("sectors", {
     autoIncrement: true,
     allowNull: false,
   },
-  name: {
+  sectorName: {
     type: DataTypes.STRING,
     allowNull: false,
+    field: "sector_name",
   },
   townId: {
     type: DataTypes.INTEGER,
