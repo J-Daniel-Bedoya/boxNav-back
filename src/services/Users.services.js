@@ -28,15 +28,34 @@ class UsersServices {
 
       const result = await Users.create(user);
 
-      town.usersNumber += 1;
-      sector.usersNumber += 1;
-      box.portUsed += 1;
-      service.usersNumber += 1;
+      if (town) {
+        town.numberUsers += 1;
+        await town.save();
+      } else {
+        console.log(town);
+        throw new Error(`Town with id ${user.townId} not found`);
+      }
 
-      await town.save();
-      await sector.save();
-      await box.save();
-      await service.save();
+      if (sector) {
+        sector.numberUsers += 1;
+        await sector.save();
+      } else {
+        throw new Error(`Sector with id ${user.sectorId} not found`);
+      }
+
+      if (box) {
+        box.numberUsers += 1;
+        await box.save();
+      } else {
+        throw new Error(`Box with id ${user.boxId} not found`);
+      }
+
+      if (service) {
+        service.numberUsers += 1;
+        await service.save();
+      } else {
+        throw new Error(`Service with id ${user.serviceId} not found`);
+      }
 
       return result;
     } catch (error) {
@@ -62,10 +81,10 @@ class UsersServices {
 
       const result = await Users.destroy({ where: { id } });
 
-      town.usersNumber -= 1;
-      sector.usersNumber -= 1;
-      box.portUsed -= 1;
-      service.usersNumber -= 1;
+      town.numberUsers -= 1;
+      sector.numberUsers -= 1;
+      box.numberUsers -= 1;
+      service.numberUsers -= 1;
 
       await town.save();
       await sector.save();

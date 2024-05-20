@@ -49,15 +49,17 @@ const Sectors = db.define("sectors", {
       field: "town_id",
     },
   },
-  boxesNumber: {
+  numberBoxes: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "box_number",
+    defaultValue: 0,
+    field: "number_boxes",
   },
-  usersNumber: {
+  numberUsers: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "user_number",
+    defaultValue: 0,
+    field: "number_users",
   },
 });
 

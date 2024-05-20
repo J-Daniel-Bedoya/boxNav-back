@@ -92,20 +92,20 @@ const Users = db.define(
     portNumber: {
       type: DataTypes.INTEGER,
       allowNull: false,
+      field: "port_number",
     },
-
     tel: {
       type: DataTypes.STRING,
       allowNull: false,
     },
-    typeService: {
+    serviceId: {
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: TypeService,
         key: "id",
       },
-      field: "type_service",
+      field: "service_id",
     },
     state: {
       type: DataTypes.BOOLEAN,

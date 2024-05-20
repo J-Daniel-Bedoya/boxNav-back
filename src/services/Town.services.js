@@ -17,17 +17,23 @@ class TownServices {
           {
             model: Sectors,
             as: "sectors",
-            attributes: ["sectorName"],
+            attributes: ["id", "sectorName"],
           },
           {
             model: Boxes,
             as: "boxes",
-            attributes: ["boxNumber", "portsUsed", "sectorId", "portsNumber"],
+            attributes: [
+              "id",
+              "numberBox",
+              "numberUsers",
+              "sectorId",
+              "numberPorts",
+            ],
           },
           {
             model: Users,
             as: "users",
-            attributes: ["userName", "boxId", "portNumber", "typeService"],
+            attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
           },
         ],
       });

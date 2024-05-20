@@ -56,30 +56,34 @@ const Boxes = db.define(
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    boxNumber: {
+    numberBox: {
       type: DataTypes.INTEGER,
       allowNull: false,
-      field: "box_number",
+      field: "number_box",
     },
-    portsNumber: {
+    numberPorts: {
       type: DataTypes.INTEGER,
       allowNull: true,
+      field: "number_ports",
     },
-    portsUsed: {
+    numberUsers: {
       type: DataTypes.INTEGER,
       allowNull: true,
-      field: "ports_used",
+      field: "number_users",
+      defaultValue: 0,
     },
     portsBad: {
       type: DataTypes.INTEGER,
       allowNull: true,
       field: "ports_bad",
+      defaultValue: 0,
     },
 
     coordinates: {
       type: DataTypes.STRING,
       allowNull: true,
       field: "img_sector",
+      defaultValue: "",
     },
   },
   {

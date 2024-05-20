@@ -40,20 +40,23 @@ const Town = db.define("town", {
     allowNull: false,
     field: "town_name",
   },
-  boxesNumber: {
+  numberBoxes: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "boxes_number",
+    defaultValue: 0,
+    field: "number_boxes",
   },
-  usersNumber: {
+  numberUsers: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "users_number",
+    defaultValue: 0,
+    field: "number_users",
   },
-  sectorsNumber: {
+  numberSectors: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "sectors_number",
+    defaultValue: 0,
+    field: "number_sectors",
   },
 });
 

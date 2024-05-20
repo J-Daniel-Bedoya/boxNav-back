@@ -15,6 +15,7 @@ const initModels = () => {
   Town.hasMany(Sectors, { foreignKey: "townId", as: "sectors" });
 
   Sectors.hasMany(Boxes, { foreignKey: "sectorId", as: "boxes" });
+  // TypeService.hasMany(Users)
 };
 
 module.exports = initModels;

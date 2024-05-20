@@ -26,8 +26,8 @@ class BoxesServices {
 
       const result = await Boxes.create(box);
 
-      town.boxesNumber += 1;
-      sector.boxesNumber += 1;
+      town.numberBoxes += 1;
+      sector.numberBoxes += 1;
       await town.save();
       await sector.save();
 
@@ -53,8 +53,8 @@ class BoxesServices {
 
       const result = await Boxes.destroy({ where: { id } });
 
-      town.boxesNumber -= 1;
-      sector.boxesNumber -= 1;
+      town.numberBoxes -= 1;
+      sector.numberBoxes -= 1;
       await town.save();
       await sector.save();
 

@@ -30,10 +30,11 @@ const TypeService = db.define("typeService", {
     allowNull: false,
     field: "service_name",
   },
-  usersNumber: {
+  numberUsers: {
     type: DataTypes.INTEGER,
     allowNull: true,
-    field: "boxes_number",
+    defaultValue: 0,
+    field: "number_users",
   },
 });
 

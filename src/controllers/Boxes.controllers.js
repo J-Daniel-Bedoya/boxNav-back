@@ -17,7 +17,7 @@ const boxesRegister = async (req, res) => {
   try {
     const box = req.body;
     const result = await BoxesServices.create(box);
-    res.status(201).json({ message: "Usuario creado con éxito", result });
+    res.status(201).json({ message: "Caja creada con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -27,7 +27,7 @@ const boxesActualize = async (req, res) => {
     const { id } = req.params;
     const box = req.body;
     const result = await BoxesServices.update(id, box);
-    res.status(200).json({ message: "Usuario actualizado con éxito", result });
+    res.status(200).json({ message: "Caja actualizada con éxito", result });
   } catch (error) {
     res.status(400).json(error.message);
   }
@@ -37,7 +37,7 @@ const boxesEliminate = async (req, res) => {
     const { id } = req.params;
     const box = req.body;
     const result = await BoxesServices.delete(id, box);
-    res.status(200).json({ message: "Un usuario ha sido eliminado con éxito" });
+    res.status(200).json({ message: "Una caja ha sido eliminada con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
   }
