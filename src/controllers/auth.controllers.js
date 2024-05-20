@@ -4,7 +4,7 @@ const adminLogin = async (req, res, next) => {
   try {
     const credentials = req.body;
     const result = await AuthServices.authenticate(credentials);
-    // console.log(result);
+
     if (result) {
       const { email, password } = result.admin;
       const admin = { email, password };

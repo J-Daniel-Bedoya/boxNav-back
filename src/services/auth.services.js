@@ -7,7 +7,6 @@ class AuthServices {
   static async authenticate(credentials) {
     try {
       const { email, password } = credentials;
-      console.log(credentials);
       const result = await Admin.findOne({
         where: { email },
         attributes: {
