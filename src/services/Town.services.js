@@ -17,7 +17,7 @@ class TownServices {
           {
             model: Sectors,
             as: "sectors",
-            attributes: ["id", "sectorName"],
+            attributes: ["id", "sectorName", "numberBoxes", "numberUsers"],
           },
           {
             model: Boxes,
