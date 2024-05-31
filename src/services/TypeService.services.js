@@ -13,13 +13,6 @@ class TypeServiceServices {
     try {
       const result = await TypeService.findOne({
         where: { id },
-        include: {
-          model: Users,
-          as: "users",
-          attributes: {
-            exclude: ["createdAt", "updatedAt"],
-          },
-        },
       });
       return result;
     } catch (error) {
