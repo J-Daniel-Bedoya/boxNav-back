@@ -1,4 +1,4 @@
-const { Users, TypeService } = require("../models");
+const { TypeService } = require("../models");
 
 class TypeServiceServices {
   static async getAll() {

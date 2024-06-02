@@ -1,9 +1,10 @@
 const { Boxes, Town, Sectors, Users } = require("../models");
 
 class BoxesServices {
-  static async getAll() {
+  static async getAll(offset, limit) {
     try {
-      const result = await Boxes.findAll();
+      const result = await Boxes.findAll(offset, limit);
+
       return result;
     } catch (error) {
       throw error;
