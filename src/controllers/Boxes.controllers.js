@@ -2,8 +2,7 @@ const { BoxesServices } = require("../services");
 
 const boxesReadAll = async (req, res) => {
   try {
-    const { offset, limit } = req.query;
-    const result = await BoxesServices.getAll(offset, limit);
+    const result = await BoxesServices.getAll();
     res.json(result);
   } catch (error) {}
 };
