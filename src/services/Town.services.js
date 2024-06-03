@@ -29,6 +29,9 @@ class TownServices {
               "sectorId",
               "numberPorts",
             ],
+            offset,
+            limit,
+            subQuery,
           },
           {
             model: Users,
