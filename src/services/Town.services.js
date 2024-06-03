@@ -32,7 +32,7 @@ class TownServices {
               "sectorId",
               "numberPorts",
             ],
-            separate: true, // Para habilitar paginación en la asociación
+            separate: true,
             limit: parseInt(limit, 10),
             offset: parseInt(offset, 10),
           },
@@ -40,12 +40,12 @@ class TownServices {
             model: Users,
             as: "users",
             attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
-            separate: true, // Para habilitar paginación en la asociación
+            separate: true,
             limit: parseInt(limit, 10),
             offset: parseInt(offset, 10),
           },
         ],
-        subQuery: false, // Asegúrate de establecer subQuery a false si es necesario
+        subQuery: false,
       });
       return result;
     } catch (error) {
