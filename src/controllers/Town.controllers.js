@@ -9,7 +9,7 @@ const townReadAll = async (req, res) => {
 const townRead = async (req, res) => {
   try {
     const { id } = req.params;
-    const { offset, limit } = req.query;
+    const { offset = 0, limit = 10 } = req.query;
     const result = await TownServices.get(id, offset, limit);
     res.status(200).json(result);
   } catch (error) {

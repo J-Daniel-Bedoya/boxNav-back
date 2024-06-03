@@ -29,9 +29,6 @@ class TownServices {
               "sectorId",
               "numberPorts",
             ],
-            offset,
-            limit,
-            subQuery,
           },
           {
             model: Users,
@@ -39,6 +36,9 @@ class TownServices {
             attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
           },
         ],
+        offset: parseInt(offset, 10), // Asegúrate de convertir los valores a enteros
+        limit: parseInt(limit, 10), // Asegúrate de convertir los valores a enteros
+        subQuery: false, // Asegúrate de establecer subQuery a false si es necesario
       });
       return result;
     } catch (error) {
