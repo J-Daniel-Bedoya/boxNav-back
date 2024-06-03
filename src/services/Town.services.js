@@ -9,7 +9,7 @@ class TownServices {
       throw error;
     }
   }
-  static async get(id) {
+  static async get(id, offset, limit) {
     try {
       const result = await Town.findOne({
         where: { id },
@@ -18,6 +18,9 @@ class TownServices {
             model: Sectors,
             as: "sectors",
             attributes: ["id", "sectorName", "numberBoxes", "numberUsers"],
+            separate: true, // Para habilitar paginación en la asociación
+            limit: parseInt(limit, 10),
+            offset: parseInt(offset, 10),
           },
           {
             model: Boxes,
@@ -29,15 +32,19 @@ class TownServices {
               "sectorId",
               "numberPorts",
             ],
+            separate: true, // Para habilitar paginación en la asociación
+            limit: parseInt(limit, 10),
+            offset: parseInt(offset, 10),
           },
           {
             model: Users,
             as: "users",
             attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
+            separate: true, // Para habilitar paginación en la asociación
+            limit: parseInt(limit, 10),
+            offset: parseInt(offset, 10),
           },
         ],
-        offset: parseInt(offset, 10), // Asegúrate de convertir los valores a enteros
-        limit: parseInt(limit, 10), // Asegúrate de convertir los valores a enteros
         subQuery: false, // Asegúrate de establecer subQuery a false si es necesario
       });
       return result;
