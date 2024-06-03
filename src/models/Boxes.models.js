@@ -58,12 +58,12 @@ const Boxes = db.define(
     },
     numberBox: {
       type: DataTypes.INTEGER,
-      allowNull: false,
+      allowNull: true,
       field: "number_box",
     },
     numberPorts: {
       type: DataTypes.INTEGER,
-      allowNull: true,
+      allowNull: false,
       field: "number_ports",
     },
     numberUsers: {
