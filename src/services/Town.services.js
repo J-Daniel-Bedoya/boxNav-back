@@ -19,8 +19,8 @@ class TownServices {
             as: "sectors",
             attributes: ["id", "sectorName", "numberBoxes", "numberUsers"],
             separate: true, // Para habilitar paginación en la asociación
-            limit: parseInt(limit, 10),
-            offset: parseInt(offset, 10),
+            limit,
+            offset,
           },
           {
             model: Boxes,
@@ -41,8 +41,8 @@ class TownServices {
             as: "users",
             attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
             separate: true,
-            limit: parseInt(limit, 10),
-            offset: parseInt(offset, 10),
+            limit,
+            offset,
           },
         ],
         subQuery: false,
