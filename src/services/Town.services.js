@@ -33,8 +33,8 @@ class TownServices {
               "numberPorts",
             ],
             separate: true,
-            limit: parseInt(limit, 10),
-            offset: parseInt(offset, 10),
+            limit,
+            offset,
           },
           {
             model: Users,
