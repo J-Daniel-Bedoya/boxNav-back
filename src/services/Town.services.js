@@ -18,7 +18,7 @@ class TownServices {
             model: Sectors,
             as: "sectors",
             attributes: ["id", "sectorName", "numberBoxes", "numberUsers"],
-            separate: true, // Para habilitar paginación en la asociación
+            separate: true,
             limit,
             offset,
           },
