@@ -1,5 +1,6 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
+const Town = require("./Town.models");
 
 /**
  * @swagger
@@ -29,6 +30,15 @@ const TypeService = db.define("typeService", {
     type: DataTypes.STRING,
     allowNull: false,
     field: "service_name",
+  },
+  townId: {
+    type: DataTypes.INTEGER,
+    allowNull: false,
+    field: "town_id",
+    references: {
+      model: Town,
+      key: "id",
+    },
   },
   numberUsers: {
     type: DataTypes.INTEGER,

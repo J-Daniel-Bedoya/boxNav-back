@@ -1,4 +1,4 @@
-const { Town, Boxes, Users, Sectors } = require("../models");
+const { Town, Boxes, Users, Sectors, TypeService } = require("../models");
 
 class TownServices {
   static async getAll() {
@@ -40,6 +40,14 @@ class TownServices {
             model: Users,
             as: "users",
             attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
+            separate: true,
+            limit,
+            offset,
+          },
+          {
+            model: TypeService,
+            as: "service",
+            attributes: ["id", "serviceName", "numberUsers"],
             separate: true,
             limit,
             offset,
