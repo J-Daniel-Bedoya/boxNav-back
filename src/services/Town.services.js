@@ -3,13 +3,16 @@ const { Town, Boxes, Users, Sectors, TypeService } = require("../models");
 class TownServices {
   static async getAll() {
     try {
-      const result = await Town.findAll();
+      const result = await Town.findAll({
+        order: [["id", "ASC"]], // Ordenar por ID o cualquier otro campo relevante
+      });
       return result;
     } catch (error) {
       throw error;
     }
   }
-  static async get(id, offset, limit) {
+
+  static async get(id, offset = 0, limit = 10) {
     try {
       const result = await Town.findOne({
         where: { id },
@@ -18,6 +21,7 @@ class TownServices {
             model: Sectors,
             as: "sectors",
             attributes: ["id", "sectorName", "numberBoxes", "numberUsers"],
+            order: [["id", "ASC"]], // Asegurar el orden de los sectores
             separate: true,
             limit,
             offset,
@@ -32,6 +36,7 @@ class TownServices {
               "sectorId",
               "numberPorts",
             ],
+            order: [["numberBox", "ASC"]], // Asegurar el orden de las cajas
             separate: true,
             limit,
             offset,
@@ -40,6 +45,7 @@ class TownServices {
             model: Users,
             as: "users",
             attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
+            order: [["id", "ASC"]], // Asegurar el orden de los usuarios
             separate: true,
             limit,
             offset,
@@ -48,6 +54,7 @@ class TownServices {
             model: TypeService,
             as: "service",
             attributes: ["id", "serviceName", "numberUsers"],
+            order: [["id", "ASC"]], // Asegurar el orden de los servicios
             separate: true,
             limit,
             offset,
@@ -60,6 +67,7 @@ class TownServices {
       throw error;
     }
   }
+
   static async create(town) {
     try {
       const result = await Town.create(town);
@@ -68,19 +76,27 @@ class TownServices {
       throw error;
     }
   }
+
   static async update(id, town) {
     try {
-      const result = await Town.update(town, {
+      const [updated] = await Town.update(town, {
         where: { id },
       });
-      return result;
+      if (updated) {
+        return await Town.findOne({ where: { id } });
+      }
+      throw new Error("Town not found");
     } catch (error) {
       throw error;
     }
   }
+
   static async delete(id) {
     try {
       const result = await Town.destroy({ where: { id } });
+      if (!result) {
+        throw new Error("Town not found");
+      }
       return result;
     } catch (error) {
       throw error;
