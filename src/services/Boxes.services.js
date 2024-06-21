@@ -33,12 +33,6 @@ class BoxesServices {
       const town = await Town.findByPk(box.townId);
       const sector = await Sectors.findByPk(box.sectorId);
 
-      // Encontrar el último número de caja y asignar el siguiente
-      const lastBox = await Boxes.findOne({
-        order: [["numberBox", "DESC"]],
-      });
-      box.numberBox = lastBox ? lastBox.numberBox + 1 : 1;
-
       const result = await Boxes.create(box);
 
       // Actualizar el número de cajas en town y sector
