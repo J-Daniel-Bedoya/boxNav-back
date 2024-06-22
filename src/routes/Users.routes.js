@@ -143,7 +143,7 @@ const {
 router.get("/user", authenticate, usersReadAll);
 router.get("/user/:id", authenticate, usersRead);
 router.post("/user", authenticate, usersRegister);
-router.patch("/user/:id", authenticate, usersActualize);
+router.put("/user/:id", authenticate, usersActualize);
 router.delete("/user/:id", authenticate, usersEliminate);
 
 module.exports = router;
