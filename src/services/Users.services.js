@@ -59,10 +59,15 @@ class UsersServices {
 
   static async update(id, user) {
     try {
-      const updated = await Users.update(user, {
+      const [updated] = await Users.update(user, {
         where: { id },
       });
-      return updated;
+
+      if (updated) {
+        const updatedUser = await Users.findOne({ where: { id } });
+        return updatedUser;
+      }
+      throw new Error("Usuario no encontrado");
     } catch (error) {
       throw new Error(`Error al actualizar el usuario: ${error.message}`);
     }
