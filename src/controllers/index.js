@@ -4,6 +4,7 @@ const {
   usersRegister,
   usersActualize,
   usersEliminate,
+  userSearch,
 } = require("./Users.controllers");
 
 const {
@@ -61,6 +62,7 @@ module.exports = {
   usersRegister,
   usersActualize,
   usersEliminate,
+  userSearch,
   //
   boxesReadAll,
   boxesRead,

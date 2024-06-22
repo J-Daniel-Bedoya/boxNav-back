@@ -8,6 +8,7 @@ const {
   usersRegister,
   usersActualize,
   usersEliminate,
+  userSearch,
 } = require("../controllers");
 
 /**
@@ -139,11 +140,39 @@ const {
  *       404:
  *         description: Usuario no encontrado
  */
+/**
+ * @swagger
+ * /api/v1/user/search:
+ *   get:
+ *     summary: Busca usuarios por nombre
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     parameters:
+ *       - in: query
+ *         name: query
+ *         schema:
+ *           type: string
+ *         required: true
+ *         description: Parte del nombre del usuario a buscar
+ *     responses:
+ *       200:
+ *         description: Lista de usuarios
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 $ref: '#/components/schemas/User'
+ *       404:
+ *         description: Usuario no encontrado
+ */
 
 router.get("/user", authenticate, usersReadAll);
 router.get("/user/:id", authenticate, usersRead);
 router.post("/user", authenticate, usersRegister);
 router.put("/user/:id", authenticate, usersActualize);
 router.delete("/user/:id", authenticate, usersEliminate);
+router.get("user/search", authenticate, userSearch);
 
 module.exports = router;
