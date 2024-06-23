@@ -133,7 +133,7 @@ const {
 
 router.get("/admin", authenticate, adminReadAll);
 router.get("/admin/:id", authenticate, adminRead);
-router.post("/admin", adminRegister);
+router.post("/admin", authenticate, adminRegister);
 router.patch("/admin/:id", authenticate, adminActualize);
 router.delete("/admin/:id", authenticate, adminEliminate);
 
