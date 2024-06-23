@@ -34,6 +34,7 @@ const {
 const {
   townReadAll,
   townRead,
+  townReadPagination,
   townRegister,
   townActualize,
   townEliminate,
@@ -84,6 +85,7 @@ module.exports = {
   //
   townReadAll,
   townRead,
+  townReadPagination,
   townRegister,
   townActualize,
   townEliminate,

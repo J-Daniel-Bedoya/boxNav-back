@@ -9,8 +9,17 @@ const townReadAll = async (req, res) => {
 const townRead = async (req, res) => {
   try {
     const { id } = req.params;
+    const result = await TownServices.get(id);
+    res.status(200).json(result);
+  } catch (error) {
+    res.status(400).json(error.message);
+  }
+};
+const townReadPagination = async (req, res) => {
+  try {
+    const { id } = req.params;
     const { offset, limit } = req.query;
-    const result = await TownServices.get(id, offset, limit);
+    const result = await TownServices.getPagination(id, offset, limit);
     res.status(200).json(result);
   } catch (error) {
     res.status(400).json(error.message);
@@ -48,6 +57,7 @@ const townEliminate = async (req, res) => {
 module.exports = {
   townReadAll,
   townRead,
+  townReadPagination,
   townRegister,
   townActualize,
   townEliminate,

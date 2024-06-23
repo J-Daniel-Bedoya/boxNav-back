@@ -12,7 +12,49 @@ class TownServices {
     }
   }
 
-  static async get(id, offset = 0, limit = 10) {
+  static async get(id) {
+    try {
+      const result = await Town.findOne({
+        where: { id },
+        include: [
+          {
+            model: Sectors,
+            as: "sectors",
+            attributes: ["id", "sectorName", "numberBoxes", "numberUsers"],
+            order: [["id", "ASC"]], // Asegurar el orden de los sectores
+          },
+          {
+            model: Boxes,
+            as: "boxes",
+            attributes: [
+              "id",
+              "numberBox",
+              "numberUsers",
+              "sectorId",
+              "numberPorts",
+            ],
+            order: [["numberBox", "ASC"]], // Asegurar el orden de las cajas
+          },
+          {
+            model: Users,
+            as: "users",
+            attributes: ["id", "userName", "boxId", "portNumber", "sectorId"],
+            order: [["id", "ASC"]], // Asegurar el orden de los usuarios
+          },
+          {
+            model: TypeService,
+            as: "service",
+            attributes: ["id", "serviceName", "numberUsers"],
+            order: [["id", "ASC"]], // Asegurar el orden de los servicios
+          },
+        ],
+      });
+      return result;
+    } catch (error) {
+      throw error;
+    }
+  }
+  static async getPagination(id, offset = 0, limit = 10) {
     try {
       const result = await Town.findOne({
         where: { id },

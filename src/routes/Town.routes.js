@@ -5,6 +5,7 @@ const authenticate = require("../middlewares/auth.middleware");
 const {
   townReadAll,
   townRead,
+  townReadPagination,
   townRegister,
   townActualize,
   townEliminate,
@@ -41,6 +42,32 @@ const {
  * /api/v1/town/{id}:
  *   get:
  *     summary: Obtiene un municipio por su ID
+ *     tags: [Towns]
+ *     parameters:
+ *       - in: path
+ *         name: id
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID del municipio
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Detalles del municipio
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: '#/components/schemas/Town'
+ *       404:
+ *         description: Municipio no encontrado
+ */
+/**
+ * @swagger
+ * /api/v1/town/pagination/{id}:
+ *   get:
+ *     summary: Obtiene un municipio por su ID y paginación
  *     tags: [Towns]
  *     parameters:
  *       - in: path
@@ -135,6 +162,7 @@ const {
  */
 
 router.get("/town", authenticate, townReadAll);
+router.get("/town/pagination/:id", authenticate, townReadPagination);
 router.get("/town/:id", authenticate, townRead);
 router.post("/town", authenticate, townRegister);
 router.patch("/town/:id", authenticate, townActualize);
