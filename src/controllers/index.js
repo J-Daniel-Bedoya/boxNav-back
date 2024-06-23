@@ -1,10 +1,10 @@
 const {
   usersReadAll,
+  userSearch,
   usersRead,
   usersRegister,
   usersActualize,
   usersEliminate,
-  userSearch,
 } = require("./Users.controllers");
 
 const {
@@ -59,11 +59,11 @@ const { adminLogin, deleteLogout } = require("./auth.controllers");
 
 module.exports = {
   usersReadAll,
+  userSearch,
   usersRead,
   usersRegister,
   usersActualize,
   usersEliminate,
-  userSearch,
   //
   boxesReadAll,
   boxesRead,

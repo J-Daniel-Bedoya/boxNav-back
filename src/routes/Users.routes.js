@@ -169,10 +169,10 @@ const {
  */
 
 router.get("/user", authenticate, usersReadAll);
+router.get("/user/search", authenticate, userSearch);
 router.get("/user/:id", authenticate, usersRead);
 router.post("/user", authenticate, usersRegister);
 router.put("/user/:id", authenticate, usersActualize);
 router.delete("/user/:id", authenticate, usersEliminate);
-router.get("user/search", authenticate, userSearch);
 
 module.exports = router;

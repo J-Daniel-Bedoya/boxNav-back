@@ -12,6 +12,22 @@ class UsersServices {
     }
   }
 
+  static async searchByName(query) {
+    try {
+      const users = await Users.findAll({
+        where: {
+          userName: {
+            [Op.iLike]: `%${query}%`,
+          },
+        },
+        attributes: ["id", "userName"],
+      });
+      return users;
+    } catch (error) {
+      throw new Error(`Error searching users: ${error.message}`);
+    }
+  }
+
   static async get(id) {
     try {
       const result = await Users.findOne({
@@ -104,22 +120,6 @@ class UsersServices {
       return result;
     } catch (error) {
       throw new Error(`Error al eliminar el usuario: ${error.message}`);
-    }
-  }
-
-  static async searchByName(query) {
-    try {
-      const users = await Users.findAll({
-        where: {
-          userName: {
-            [Op.iLike]: `%${query}%`,
-          },
-        },
-        attributes: ["id", "userName"],
-      });
-      return users;
-    } catch (error) {
-      throw new Error(`Error searching users: ${error.message}`);
     }
   }
 }
