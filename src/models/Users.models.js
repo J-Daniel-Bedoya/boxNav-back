@@ -95,7 +95,7 @@ const Users = db.define(
       field: "port_number",
     },
     tel: {
-      type: DataTypes.INTEGER,
+      type: DataTypes.BIGINT,
       allowNull: false,
     },
     serviceId: {
