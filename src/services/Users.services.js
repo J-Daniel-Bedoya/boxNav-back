@@ -1,4 +1,5 @@
 const { Users, Town, Sectors, Boxes, TypeService } = require("../models");
+const { Op } = require("sequelize");
 
 class UsersServices {
   static async getAll() {
