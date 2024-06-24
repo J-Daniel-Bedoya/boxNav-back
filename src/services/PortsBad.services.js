@@ -17,14 +17,15 @@ class PortsBadServices {
     }
   }
 
-  static async create(port) {
+  static async create(boxId) {
     try {
-      const box = await Boxes.findByPk(port.boxId);
-      if (!box.portsBad.includes(port.portNumber)) {
-        box.portsBad.push(port.portNumber);
-        await box.save();
-      }
-      return await PortsBad.create(port);
+      const box = await Boxes.findByPk(boxId);
+      const result = await PortsBad.create(port);
+
+      box.portsBad += 1;
+      await box.save();
+
+      return result;
     } catch (error) {
       throw new Error("Error al registrar el puerto problemático");
     }
@@ -49,12 +50,10 @@ class PortsBadServices {
         return null;
       }
       const box = await Boxes.findByPk(boxId);
-      if (box.portsBad.includes(portBad.portNumber)) {
-        box.portsBad = box.portsBad.filter(
-          (port) => port !== portBad.portNumber
-        );
-        await box.save();
-      }
+
+      box.portsBad += 1;
+      await box.save();
+
       await portBad.destroy();
       return true;
     } catch (error) {

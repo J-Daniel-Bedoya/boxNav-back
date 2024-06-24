@@ -73,10 +73,10 @@ const Boxes = db.define(
       defaultValue: 0,
     },
     portsBad: {
-      type: DataTypes.ARRAY(DataTypes.INTEGER),
+      type: DataTypes.INTEGER,
       allowNull: true,
       field: "ports_bad",
-      defaultValue: [],
+      defaultValue: 0,
     },
 
     coordinates: {
