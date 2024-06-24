@@ -1,59 +1,64 @@
 const { PortsBad, Boxes } = require("../models");
 
 class PortsBadServices {
-  static async getAll() {
+  static async getAll(boxId) {
     try {
-      const result = await PortsBad.findAll();
-      return result;
+      return await PortsBad.findAll({ where: { boxId } });
     } catch (error) {
-      throw error;
+      throw new Error("Error al obtener los puertos problemáticos");
     }
   }
-  static async get(id) {
+
+  static async get(boxId, id) {
     try {
-      const result = await PortsBad.findOne({
-        where: { id },
-      });
-      return result;
+      return await PortsBad.findOne({ where: { boxId, id } });
     } catch (error) {
-      throw error;
+      throw new Error("Error al obtener el puerto problemático");
     }
   }
+
   static async create(port) {
     try {
       const box = await Boxes.findByPk(port.boxId);
-      const result = await PortsBad.create(port);
-
-      box.portsBad.push(port.port);
-      await box.save();
-
-      return result;
+      if (!box.portsBad.includes(port.portNumber)) {
+        box.portsBad.push(port.portNumber);
+        await box.save();
+      }
+      return await PortsBad.create(port);
     } catch (error) {
-      throw error;
+      throw new Error("Error al registrar el puerto problemático");
     }
   }
 
-  static async update(id, port) {
+  static async update(boxId, id, port) {
     try {
-      const result = await PortsBad.update(port, {
-        where: { id },
-      });
-      return result;
+      const portBad = await PortsBad.findOne({ where: { boxId, id } });
+      if (!portBad) {
+        return null;
+      }
+      return await portBad.update(port);
     } catch (error) {
-      throw error;
+      throw new Error("Error al actualizar el puerto problemático");
     }
   }
+
   static async delete(id, boxId) {
     try {
+      const portBad = await PortsBad.findOne({ where: { boxId, id } });
+      if (!portBad) {
+        return null;
+      }
       const box = await Boxes.findByPk(boxId);
-      const result = await PortsBad.destroy({ where: { id } });
-
-      box.portsBad -= 1;
-      await box.save();
-
-      return result;
+      if (box.portsBad.includes(portBad.portNumber)) {
+        box.portsBad = box.portsBad.filter(
+          (port) => port !== portBad.portNumber
+        );
+        await box.save();
+      }
+      await portBad.destroy();
+      return true;
     } catch (error) {
-      throw error;
+      throw new Error("Error al eliminar el puerto problemático");
     }
   }
 }

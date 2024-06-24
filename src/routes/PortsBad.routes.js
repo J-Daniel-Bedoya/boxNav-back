@@ -19,10 +19,18 @@ const {
 
 /**
  * @swagger
- * /api/v1/port:
+ * /api/v1/box/{boxId}/port:
  *   get:
- *     summary: Obtiene todos los puertos problemáticos
+ *     summary: Obtiene todos los puertos problemáticos de una caja específica
  *     tags: [PortsBad]
+ *     parameters:
+ *       - in: path
+ *         name: boxId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID de la caja
  *     security:
  *       - bearerAuth: []
  *     responses:
@@ -38,11 +46,18 @@ const {
 
 /**
  * @swagger
- * /api/v1/port/{id}:
+ * /api/v1/box/{boxId}/port/{id}:
  *   get:
- *     summary: Obtiene un puerto problemático por su ID
+ *     summary: Obtiene un puerto problemático por su ID en una caja específica
  *     tags: [PortsBad]
  *     parameters:
+ *       - in: path
+ *         name: boxId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID de la caja
  *       - in: path
  *         name: id
  *         required: true
@@ -65,10 +80,18 @@ const {
 
 /**
  * @swagger
- * /api/v1/port:
+ * /api/v1/box/{boxId}/port:
  *   post:
- *     summary: Registra un nuevo puerto problemático
+ *     summary: Registra un nuevo puerto problemático en una caja específica
  *     tags: [PortsBad]
+ *     parameters:
+ *       - in: path
+ *         name: boxId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID de la caja
  *     requestBody:
  *       required: true
  *       content:
@@ -84,11 +107,18 @@ const {
 
 /**
  * @swagger
- * /api/v1/port/{id}:
+ * /api/v1/box/{boxId}/port/{id}:
  *   patch:
- *     summary: Actualiza un puerto problemático por su ID
+ *     summary: Actualiza un puerto problemático por su ID en una caja específica
  *     tags: [PortsBad]
  *     parameters:
+ *       - in: path
+ *         name: boxId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID de la caja
  *       - in: path
  *         name: id
  *         required: true
@@ -113,11 +143,18 @@ const {
 
 /**
  * @swagger
- * /api/v1/port/{id}:
+ * /api/v1/box/{boxId}/port/{id}:
  *   delete:
- *     summary: Elimina un puerto problemático por su ID
+ *     summary: Elimina un puerto problemático por su ID en una caja específica
  *     tags: [PortsBad]
  *     parameters:
+ *       - in: path
+ *         name: boxId
+ *         required: true
+ *         schema:
+ *           type: integer
+ *           format: int32
+ *         description: ID de la caja
  *       - in: path
  *         name: id
  *         required: true
@@ -134,10 +171,10 @@ const {
  *         description: Puerto problemático no encontrado
  */
 
-router.get("/port", authenticate, PortsBadReadAll);
-router.get("/port/:id", authenticate, PortsBadRead);
-router.post("/port", authenticate, PortsBadRegister);
-router.patch("/port/:id", authenticate, PortsBadActualize);
-router.delete("/port/:id", authenticate, PortsBadEliminate);
+router.get("/box/:id/port", authenticate, PortsBadReadAll);
+router.get("/box/:id/port/:id", authenticate, PortsBadRead);
+router.post("/box/:id/port", authenticate, PortsBadRegister);
+router.patch("/box/:id/port/:id", authenticate, PortsBadActualize);
+router.delete("/box/:id/port/:id", authenticate, PortsBadEliminate);
 
 module.exports = router;
