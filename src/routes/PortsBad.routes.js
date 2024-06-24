@@ -171,10 +171,10 @@ const {
  *         description: Puerto problemático no encontrado
  */
 
-router.get("/box/:id/port", authenticate, PortsBadReadAll);
-router.get("/box/:id/port/:id", authenticate, PortsBadRead);
-router.post("/box/:id/port", authenticate, PortsBadRegister);
-router.patch("/box/:id/port/:id", authenticate, PortsBadActualize);
-router.delete("/box/:id/port/:id", authenticate, PortsBadEliminate);
+router.get("/box/:boxId/port", authenticate, PortsBadReadAll);
+router.get("/box/:boxId/port/:id", authenticate, PortsBadRead);
+router.post("/box/:boxId/port", authenticate, PortsBadRegister);
+router.patch("/box/:boxId/port/:id", authenticate, PortsBadActualize);
+router.delete("/box/:boxId/port/:id", authenticate, PortsBadEliminate);
 
 module.exports = router;

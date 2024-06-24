@@ -82,7 +82,6 @@ const Boxes = db.define(
     coordinates: {
       type: DataTypes.STRING,
       allowNull: true,
-      field: "img_sector",
       defaultValue: "",
     },
   },
