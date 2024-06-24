@@ -24,14 +24,17 @@ class PortsBadServices {
       const box = await Boxes.findByPk(port.boxId);
       const result = await PortsBad.create(port);
 
-      box.portsBad += 1;
-      await box.save();
+      if (!box.portsBad.includes(port.portNumber)) {
+        box.portsBad.push(port.portNumber);
+        await box.save();
+      }
 
       return result;
     } catch (error) {
       throw error;
     }
   }
+
   static async update(id, port) {
     try {
       const result = await PortsBad.update(port, {
