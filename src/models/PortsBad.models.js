@@ -59,7 +59,7 @@ const PortsBad = db.define(
       allowNull: false,
     },
     signal: {
-      type: DataTypes.STRING,
+      type: DataTypes.INTEGER,
       allowNull: true,
     },
   },
