@@ -24,10 +24,8 @@ class PortsBadServices {
       const box = await Boxes.findByPk(port.boxId);
       const result = await PortsBad.create(port);
 
-      if (!box.portsBad.includes(port.portNumber)) {
-        box.portsBad.push(port.portNumber);
-        await box.save();
-      }
+      box.portsBad.push(port.portNumber);
+      await box.save();
 
       return result;
     } catch (error) {
