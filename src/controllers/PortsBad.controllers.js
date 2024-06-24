@@ -35,8 +35,7 @@ const PortsBadActualize = async (req, res) => {
 const PortsBadEliminate = async (req, res) => {
   try {
     const { id } = req.params;
-    const port = req.body;
-    const result = await PortsBadServices.delete(id, port);
+    const result = await PortsBadServices.delete(id);
     res.status(200).json({ message: "Usuario eliminado con éxito" });
   } catch (error) {
     res.status(400).json(error.message);
