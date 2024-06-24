@@ -17,7 +17,7 @@ class PortsBadServices {
     }
   }
 
-  static async create(boxId) {
+  static async create(boxId, port) {
     try {
       const box = await Boxes.findByPk(boxId);
       const result = await PortsBad.create(port);
