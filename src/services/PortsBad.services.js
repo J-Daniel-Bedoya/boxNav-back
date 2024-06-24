@@ -42,9 +42,9 @@ class PortsBadServices {
       throw error;
     }
   }
-  static async delete(id) {
+  static async delete(id, boxId) {
     try {
-      const box = await Boxes.findByPk(port.boxId);
+      const box = await Boxes.findByPk(boxId);
       const result = await PortsBad.destroy({ where: { id } });
 
       box.portsBad -= 1;
