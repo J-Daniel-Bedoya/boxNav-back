@@ -19,6 +19,7 @@ const initModels = () => {
   Sectors.hasMany(Boxes, { foreignKey: "sectorId", as: "boxes" });
 
   Boxes.hasMany(Users, { foreignKey: "boxId", as: "users" });
+  Boxes.hasMany(PortsBad, { foreignKey: "boxId", as: "ports" });
 };
 
 module.exports = initModels;

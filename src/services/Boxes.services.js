@@ -25,7 +25,7 @@ class BoxesServices {
           },
           {
             model: PortsBad,
-            as: "portsBad",
+            as: "ports",
             attributes: ["id", "port"],
             order: [["id", "ASC"]],
           },
