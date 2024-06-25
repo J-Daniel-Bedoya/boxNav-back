@@ -36,6 +36,15 @@ const PortsBad = db.define(
       autoIncrement: true,
       allowNull: false,
     },
+    boxId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: Boxes,
+        key: "id",
+      },
+      field: "box_id",
+    },
     port: {
       type: DataTypes.INTEGER,
       allowNull: false,

@@ -6,12 +6,10 @@ const PortsBadReadAll = async (req, res) => {
     const result = await PortsBadServices.getAll(boxId);
     res.status(200).json(result);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error al obtener los puertos problemáticos",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error al obtener los puertos problemáticos",
+      error: error.message,
+    });
   }
 };
 
@@ -26,12 +24,10 @@ const PortsBadRead = async (req, res) => {
     }
     res.status(200).json(result);
   } catch (error) {
-    res
-      .status(500)
-      .json({
-        message: "Error al obtener el puerto problemático",
-        error: error.message,
-      });
+    res.status(500).json({
+      message: "Error al obtener el puerto problemático",
+      error: error.message,
+    });
   }
 };
 
@@ -44,12 +40,10 @@ const PortsBadRegister = async (req, res) => {
       .status(201)
       .json({ message: "Puerto problemático registrado con éxito", result });
   } catch (error) {
-    res
-      .status(400)
-      .json({
-        message: "Error al registrar el puerto problemático",
-        error: error.message,
-      });
+    res.status(400).json({
+      message: "Error al registrar el puerto problemático",
+      error: error.message,
+    });
   }
 };
 
@@ -67,12 +61,10 @@ const PortsBadActualize = async (req, res) => {
       .status(200)
       .json({ message: "Puerto problemático actualizado con éxito", result });
   } catch (error) {
-    res
-      .status(400)
-      .json({
-        message: "Error al actualizar el puerto problemático",
-        error: error.message,
-      });
+    res.status(400).json({
+      message: "Error al actualizar el puerto problemático",
+      error: error.message,
+    });
   }
 };
 
@@ -89,12 +81,10 @@ const PortsBadEliminate = async (req, res) => {
       .status(200)
       .json({ message: "Puerto problemático eliminado con éxito" });
   } catch (error) {
-    res
-      .status(400)
-      .json({
-        message: "Error al eliminar el puerto problemático",
-        error: error.message,
-      });
+    res.status(400).json({
+      message: "Error al eliminar el puerto problemático",
+      error: error.message,
+    });
   }
 };
 
