@@ -1,4 +1,4 @@
-const { Boxes, Town, Sectors, Users } = require("../models");
+const { Boxes, Town, Sectors, Users, PortsBad } = require("../models");
 
 class BoxesServices {
   static async getAll() {
@@ -16,11 +16,20 @@ class BoxesServices {
     try {
       const result = await Boxes.findOne({
         where: { id },
-        include: {
-          model: Users,
-          as: "users",
-          attributes: ["id", "userName", "portNumber"],
-        },
+        include: [
+          {
+            model: Users,
+            as: "users",
+            attributes: ["id", "userName", "portNumber"],
+            order: [["id", "ASC"]],
+          },
+          {
+            model: PortsBad,
+            as: "portsBad",
+            attributes: ["id", "port"],
+            order: [["id", "ASC"]],
+          },
+        ],
       });
       return result;
     } catch (error) {

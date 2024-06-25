@@ -2,8 +2,7 @@ const { PortsBadServices } = require("../services");
 
 const PortsBadReadAll = async (req, res) => {
   try {
-    const { boxId } = req.params;
-    const result = await PortsBadServices.getAll(boxId);
+    const result = await PortsBadServices.getAll();
     res.status(200).json(result);
   } catch (error) {
     res.status(500).json({
@@ -15,8 +14,8 @@ const PortsBadReadAll = async (req, res) => {
 
 const PortsBadRead = async (req, res) => {
   try {
-    const { boxId, id } = req.params;
-    const result = await PortsBadServices.get(boxId, id);
+    const { id } = req.params;
+    const result = await PortsBadServices.get(id);
     if (!result) {
       return res
         .status(404)
@@ -33,9 +32,8 @@ const PortsBadRead = async (req, res) => {
 
 const PortsBadRegister = async (req, res) => {
   try {
-    const { boxId } = req.params;
     const port = req.body;
-    const result = await PortsBadServices.create(boxId, port);
+    const result = await PortsBadServices.create(port);
     res
       .status(201)
       .json({ message: "Puerto problemático registrado con éxito", result });
@@ -49,9 +47,9 @@ const PortsBadRegister = async (req, res) => {
 
 const PortsBadActualize = async (req, res) => {
   try {
-    const { boxId, id } = req.params;
+    const { id } = req.params;
     const port = req.body;
-    const result = await PortsBadServices.update(boxId, id, port);
+    const result = await PortsBadServices.update(id, port);
     if (!result) {
       return res
         .status(404)
@@ -70,8 +68,8 @@ const PortsBadActualize = async (req, res) => {
 
 const PortsBadEliminate = async (req, res) => {
   try {
-    const { boxId, id } = req.params;
-    const result = await PortsBadServices.delete(boxId, id);
+    const { id } = req.params;
+    const result = await PortsBadServices.delete(id);
     if (!result) {
       return res
         .status(404)
