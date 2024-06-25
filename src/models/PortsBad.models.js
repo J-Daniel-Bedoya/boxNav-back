@@ -1,7 +1,6 @@
 const db = require("../utils/database");
 const DataTypes = require("sequelize");
 const Boxes = require("./Boxes.models");
-const Town = require("./Town.models");
 
 /**
  * @swagger
@@ -22,7 +21,7 @@ const Town = require("./Town.models");
  *           type: integer
  *           description: Número de puerto problemático
  *         signal:
- *           type: string
+ *           type: integer
  *           nullable: true
  *           description: Señal asociada al puerto problemático (opcional)
  */
