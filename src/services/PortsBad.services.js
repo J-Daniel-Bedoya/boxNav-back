@@ -45,7 +45,7 @@ class PortsBadServices {
       const portBad = await PortsBad.findByPk(id);
       const box = await Boxes.findByPk(portBad.boxId);
 
-      box.portsBad += 1;
+      box.portsBad -= 1;
       await box.save();
 
       await portBad.destroy();
